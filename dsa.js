@@ -15,26 +15,9 @@ const search = (arr, target, leftIndex, rightIndex) => {
   }
 };
 // console.log(recursiveBinarysearch([-2, 67, 8, 99, 19], 67));
-
-// 02 - find index first occurence in string
-const subStrCheck = (mainstr, subStr) => {
-  const m = mainstr.length;
-  const n = subStr.length;
-  for (i = 0; i < m; i++) {
-    let flag = true;
-    for (j = 0; j < n; j++) {
-      if (mainstr[i + j] !== subStr[j]) {
-        flag = false;
-        break;
-      }
-    }
-    if (flag) return i;
-  }
-  return -1;
-};
-// console.log(subStrCheck("leetcodes", "codes"));
-
-//03 selectionsort
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+//02 selectionsort
 const selectionSort = (arr) => {
   for (i = 0; i < arr.length; i++) {
     let minIndex = i;
@@ -50,8 +33,9 @@ const selectionSort = (arr) => {
   // return arr;
 };
 // console.log(selectionSort([-2, 5, 1000, -7]), "selectionsort");
-
-//04 bubbleSort check right a[i] big swap
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+//03 bubbleSort check right a[i] big swap
 const bubbleSort = (a) => {
   for (i = 0; i < a.length; i++) {
     for (j = i + 1; j < a.length; j++) {
@@ -65,8 +49,9 @@ const bubbleSort = (a) => {
   return a;
 };
 // console.log(bubbleSort([-2, 5, 1000, -7]), "bubbleSort");
-
-// 05. inselectionSort -check letf arr[j] > arr[i] check j big
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+// 04. inselectionSort -check letf arr[j] > arr[i] check j big
 const inselectionSort = (arr) => {
   for (i = 0; i < arr.length; i++) {
     const currentIndex = arr[i];
@@ -81,8 +66,9 @@ const inselectionSort = (arr) => {
   return arr;
 };
 // console.log(inselectionSort([-2, 5, 100, -7]));
-
-// 06.Mergesort
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+// 05.Mergesort
 const margesort = (arr) => {
   // console.log(arr, "leftArr");
   if (arr.length < 2) return arr;
@@ -117,10 +103,8 @@ const margeFun = (leftArr, rightArr) => {
   while (leftArr.length > 0 && rightArr.length > 0) {
     if (leftArr[0] <= rightArr[0]) {
       result.push(leftArr.shift());
-      // console.log(result, "left");
     } else {
-      result.push(rightArr.shift());
-      // console.log(result, "right");
+      result.push(rightArr.shift());;
     }
     return [...result, ...leftArr, ...rightArr];
   }
@@ -142,31 +126,54 @@ const margeFun = (leftArr, rightArr) => {
 // [8, 1]
 // [1]
 // console.log(margesort([-2, 5, 100, -7, 8, 1, 45, 99]), "final");
-
-// 07 valid Anagram 0 of n
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+//06. Quicksort
+// console.log(Quicksort([-2, 5, 100, -7, 8, 1, 45, 99]))
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+// 07 - find index first occurence in string
+const subStrCheck = (mainstr, subStr) => {
+  const m = mainstr.length;
+  const n = subStr.length;
+  for (i = 0; i < m; i++) {
+    let flag = true;
+    for (j = 0; j < n; j++) {
+      if (mainstr[i + j] !== subStr[j]) {
+        flag = false;
+        break;
+      }
+    }
+    if (flag) return i;
+  }
+  return -1;
+};
+// console.log(subStrCheck("leetcodes", "codes"));
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+// 08 valid Anagram 0 of n
 const isAnagram = (s, t) => {
   let map = new Map();
   if (s.length !== t.length) return false;
-  // for (i = 0; i < s.length; i++) {
-  //   map.set(s[i], (map.get(s[i]) || 0) + 1);
-  // }
-  // for (i = 0; i < t.length; i++) {
-  //   if (!map.has(t[i])) return false;
-  //   map.set(t[i], map.get(t[i]) - 1);
-  //   if (map.get(t[i]) === 0) map.delete(t[i]);
-  // }
+  for (i = 0; i < s.length; i++) {
+    map.set(s[i], (map.get(s[i]) || 0) + 1);
+  }
+  for (i = 0; i < t.length; i++) {
+    if (!map.has(t[i])) return false;
+    map.set(t[i], map.get(t[i]) - 1);
+    if (map.get(t[i]) === 0) map.delete(t[i]);
+  }
   // return map.size === 0;
 
   //second
-  // for (i = 0; i < s.length; i++) {
-  //   if (map[s[i]]) map[s[i]]++;
-  //   else map[s[i]] = 1;
-  // }
-  // for (i = 0; i < t.length; i++) {
-  //   if (!map[t[i]]) return false;
-  //   if (map[t[i]]) map[t[i]]--;
-  // }
-  // console.log(map);
+  for (i = 0; i < s.length; i++) {
+    if (map[s[i]]) map[s[i]]++;
+    else map[s[i]] = 1;
+  }
+  for (i = 0; i < t.length; i++) {
+    if (!map[t[i]]) return false;
+    if (map[t[i]]) map[t[i]]--;
+  }
   // return true;
 
   //third
@@ -199,8 +206,9 @@ const isAnagram = (s, t) => {
   return true;
 };
 // console.log(isAnagram("anagram", "nagaram"));
-
-// 08. length  OfLongest Substring
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+// 09. length  OfLongest Substring
 const lengthOfLongestSubstring = (s) => {
   // const currentStr = [];
   // let maxLength = 0;
@@ -222,16 +230,18 @@ const lengthOfLongestSubstring = (s) => {
   for (let i = 0; i < s.length; i++) {
     if (seen.has(s[i])) {
       start = Math.max(seen.get(s[i]), start);
+      // start = Math.max(seen.get(s[i]) + 1, start);
     }
     seen.set(s[i], i);
     maxLength = Math.max(maxLength, i - start);
+    // maxLength = Math.max(maxLength, i - start + 1);
   }
   return maxLength;
 };
-
 // console.log(lengthOfLongestSubstring("baabgh")); // Output should be 3
-
-// 09. Reverse number
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+// 10. Reverse number
 //reverse number 32bit singed (2147483648) values also accepted
 var reverseNumber = function (x) {
   let n = Math.abs(x); // nagative value to passitive
@@ -268,7 +278,9 @@ var reverseNumber = function (x) {
   //remove 6
 };
 // console.log(reverseNumber(567));
-
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+// 111. zigzagConvert
 var zigzagConvert = function (s, numRows) {
   if(numRows == 1) return s;
   let curRow = 0
@@ -288,8 +300,21 @@ var zigzagConvert = function (s, numRows) {
   }
   return result
 };
+
+//PAYPALISHIRING
 //[0:{}, 1:{}, 2:{}] rows
-//curRow =0 s[i] = P going false
+//curRow =0 s[0] = P, going false-- [0:{P}, 1:{}, 2:{}]
+// if (curRow == 0) -- curRow + 1 =1 going true
+//curRow =0 s[1] = A, going true-- [0:{P}, 1:{A}, 2:{}] curRow+1 = 2
+//curRow =0 s[2] = Y, going true-- [0:{P}, 1:{A}, 2:{y}] 
+// if(curRow - numRows == -1) going false curRow -1 = 1
+//curRow =0 s[1] = P, going false-- [0:{P}, 1:{AP}, 2:{y}] curRow-1 = 0
+//curRow =0 s[0] = A, going false-- [0:{PA}, 1:{AP}, 2:{y}]
+// if (curRow == 0) -- curRow + 1 =1 going true
+//curRow =0 s[1] = L, going true-- [0:{PA}, 1:{APL}, 2:{Y}]curRow+1 = 2
+//curRow =0 s[2] = I, going true-- [0:{PA}, 1:{APL}, 2:{YI}]
+// if(curRow - numRows == -1) going false curRow -1 = 1 
 
-
-console.log(zigzagConvert("PAYPALISHIRING", 3)); // Output: "PAHNAPLSIIGYIR"
+// console.log(zigzagConvert("PAYPALISHIRING", 3)); // Output: "PAHNAPLSIIGYIR"
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
