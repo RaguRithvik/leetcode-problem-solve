@@ -222,16 +222,14 @@ const lengthOfLongestSubstring = (s) => {
   for (let i = 0; i < s.length; i++) {
     if (seen.has(s[i])) {
       start = Math.max(seen.get(s[i]), start);
-      console.log(seen.get(s[i]), start, "start");
     }
     seen.set(s[i], i);
-    // console.log(i,start, "start");
     maxLength = Math.max(maxLength, i - start);
   }
   return maxLength;
 };
 
-console.log(lengthOfLongestSubstring("baabgh")); // Output should be 3
+// console.log(lengthOfLongestSubstring("baabgh")); // Output should be 3
 
 // 09. Reverse number
 //reverse number 32bit singed (2147483648) values also accepted
@@ -259,15 +257,39 @@ var reverseNumber = function (x) {
   //reversed = 0 * 10+ 7 = 7
   //remove 7 -- Math.floor(n / 10)
   // 56
-  //digist = 6 
+  //digist = 6
   //reversed = reversed * 10 + digist
   //reversed = 6 * 10 + 7 = 67
   //remove 6
   // 56
-  //digist = 6 
+  //digist = 6
   //reversed = reversed * 10 + digist
   //reversed = 6 * 10 + 7 = 67
   //remove 6
 };
-console.log(reverseNumber(567));
+// console.log(reverseNumber(567));
 
+var zigzagConvert = function (s, numRows) {
+  if(numRows == 1) return s;
+  let curRow = 0
+  let rows = {}
+  let going = false // check 0 or 2 i
+  for (i = 0; numRows > i; i++) {
+      rows[i] = ""
+  }
+  for (i = 0; i < s.length; i++) {
+      rows[curRow] += s[i]
+      if ((curRow == 0) || (curRow - numRows == -1)) going = !going
+      going ? curRow += 1 :curRow -= 1;
+  }
+  result = ""
+  for (i = 0; numRows > i; i++) {
+      result += rows[i]
+  }
+  return result
+};
+//[0:{}, 1:{}, 2:{}] rows
+//curRow =0 s[i] = P going false
+
+
+console.log(zigzagConvert("PAYPALISHIRING", 3)); // Output: "PAHNAPLSIIGYIR"
