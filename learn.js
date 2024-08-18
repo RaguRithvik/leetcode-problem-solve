@@ -49,11 +49,3 @@ const map = new Map()
 const kvArray = [["a",1], ["b",1]]
 console.log(new Map(kvArray)); //Map(2) { 'a' => 1, 'b' => 1 }
 // console.log((new Map(kvArray)).size); 2
-
-//Object Learn
-let n= 123
-    while(n > 0){
-        let floor = Math.floor(n%10);
-        let n = Math.floor(n/2)
-    }
-    console.log(n, "n")
