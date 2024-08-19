@@ -244,10 +244,10 @@ const lengthOfLongestSubstring = (s) => {
 // 10. Reverse number
 //reverse number 32bit singed (2147483648) values also accepted
 var reverseNumber = function (x) {
-  let n = Math.abs(x); // nagative value to passitive
+  let n = Math.abs(x); // nagative value to positive
   let reversed = 0;
-  let maxInt32 = Math.pow(2, 31) - 1;
-  let minInt32 = -Math.pow(2, 31);
+  let maxInt32 = Math.pow(2, 31) - 1; // square values logic 2power of 31 2147483648 -1 2147483647
+  let minInt32 = -Math.pow(2, 31); // nagative value 2power of 31
   while (n > 0) {
     const digist = Math.floor(n % 10);
     reversed = reversed * 10 + digist; // 0
@@ -280,7 +280,7 @@ var reverseNumber = function (x) {
 // console.log(reverseNumber(567));
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
-// 111. zigzagConvert
+// 11. zigzagConvert
 var zigzagConvert = function (s, numRows) {
   if(numRows == 1) return s;
   let curRow = 0
@@ -318,3 +318,34 @@ var zigzagConvert = function (s, numRows) {
 // console.log(zigzagConvert("PAYPALISHIRING", 3)); // Output: "PAHNAPLSIIGYIR"
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
+// 12. longestPalindrome
+function longestPalindrome(s) {
+  if (s.length < 2) return s;
+
+  let start = 0, maxLength = 1;
+
+  function expandAroundCenter(left, right) {
+      while (left >= 0 && right < s.length && s[left] === s[right]) {
+          left--;
+          right++;
+      }
+      return right - left - 1;
+  }
+
+  for (let i = 0; i < s.length; i++) {
+      let len1 = expandAroundCenter(i, i);        // Odd length palindromes
+      let len2 = expandAroundCenter(i, i + 1);    // Even length palindromes
+      let len = Math.max(len1, len2);
+
+      if (len > maxLength) {
+          maxLength = len;
+          start = i - Math.floor((len - 1) / 2);
+      }
+  }
+
+  return s.substring(start, start + maxLength);
+}
+
+// Example usage:
+console.log(longestPalindrome("babad")); // Output: "bab" or "aba"
+console.log(longestPalindrome("cbbd"));  // Output: "bb"
