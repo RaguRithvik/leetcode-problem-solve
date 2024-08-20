@@ -220,18 +220,18 @@ const longestCommonPrefix = (arr) => {
 // first first array to to next to two array
 //for (j = 1; j < arr.length; j++) // j =1 because [1][0] flow [2][0] flight
 // con01
-// i =0, j =1, arr[0][i] == f 
-// arr[j][i] f == f arr[0][i] j++ j= 2
-// arr[j][i] f == f arr[0][i] j++ j =3 j < arr.length(3<3) flase comes out to 2nd loop i++ i =1
+// i =0, j =1, arr[0][i] == f
+// arr[j][i]-arr[1][0] f == f arr[0][i]-arr[0][0] j++ j= 2
+// arr[j][i]-arr[2][0] f == f arr[0][i]-arr[0][0]  j++ j =3 j < arr.length(3<3) flase comes out to 2nd loop i++ i =1
 // con02
 // i =1, j =1, arr[0][i] == l
-// arr[j][i] l == l arr[0][i]
-// arr[j][i] l == l arr[0][i]
- // con03
+// arr[j][i]-arr[1][1] l == l arr[0][i]-arr[0][1]
+// arr[j][i]-arr[2][1] l == l arr[0][i]-arr[0][1]
+// con03
 // i =1, j =1, arr[0][i] == 0
-// arr[j][i] o == o arr[0][i]
-// arr[j][i] i == o arr[0][i] flag false and break 2nd for loop 
-// flag true value accept fl return
+// arr[j][i]-arr[1][2] o == o arr[0][i]-arr[0][2]
+// arr[j][i]-arr[2][2] i !== o arr[0][i]-arr[0][2] flag false and break 2nd for loop
+// flag condition check true so fl return
 console.log(longestCommonPrefix(["flower", "flow", "flight"])); // Output: "fl"
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
