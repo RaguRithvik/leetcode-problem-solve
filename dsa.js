@@ -104,7 +104,7 @@ const margeFun = (leftArr, rightArr) => {
     if (leftArr[0] <= rightArr[0]) {
       result.push(leftArr.shift());
     } else {
-      result.push(rightArr.shift());;
+      result.push(rightArr.shift());
     }
     return [...result, ...leftArr, ...rightArr];
   }
@@ -282,23 +282,23 @@ var reverseNumber = function (x) {
 // -----------------------------------------------------------------------------------------------------
 // 11. zigzagConvert
 var zigzagConvert = function (s, numRows) {
-  if(numRows == 1) return s;
-  let curRow = 0
-  let rows = {}
-  let going = false // check 0 or 2 i
+  if (numRows == 1) return s;
+  let curRow = 0;
+  let rows = {};
+  let going = false; // check 0 or 2 i
   for (i = 0; numRows > i; i++) {
-      rows[i] = ""
+    rows[i] = "";
   }
   for (i = 0; i < s.length; i++) {
-      rows[curRow] += s[i]
-      if ((curRow == 0) || (curRow - numRows == -1)) going = !going
-      going ? curRow += 1 :curRow -= 1;
+    rows[curRow] += s[i];
+    if (curRow == 0 || curRow - numRows == -1) going = !going;
+    going ? (curRow += 1) : (curRow -= 1);
   }
-  result = ""
+  result = "";
   for (i = 0; numRows > i; i++) {
-      result += rows[i]
+    result += rows[i];
   }
-  return result
+  return result;
 };
 
 //PAYPALISHIRING
@@ -306,46 +306,34 @@ var zigzagConvert = function (s, numRows) {
 //curRow =0 s[0] = P, going false-- [0:{P}, 1:{}, 2:{}]
 // if (curRow == 0) -- curRow + 1 =1 going true
 //curRow =0 s[1] = A, going true-- [0:{P}, 1:{A}, 2:{}] curRow+1 = 2
-//curRow =0 s[2] = Y, going true-- [0:{P}, 1:{A}, 2:{y}] 
+//curRow =0 s[2] = Y, going true-- [0:{P}, 1:{A}, 2:{y}]
 // if(curRow - numRows == -1) going false curRow -1 = 1
 //curRow =0 s[1] = P, going false-- [0:{P}, 1:{AP}, 2:{y}] curRow-1 = 0
 //curRow =0 s[0] = A, going false-- [0:{PA}, 1:{AP}, 2:{y}]
 // if (curRow == 0) -- curRow + 1 =1 going true
 //curRow =0 s[1] = L, going true-- [0:{PA}, 1:{APL}, 2:{Y}]curRow+1 = 2
 //curRow =0 s[2] = I, going true-- [0:{PA}, 1:{APL}, 2:{YI}]
-// if(curRow - numRows == -1) going false curRow -1 = 1 
+// if(curRow - numRows == -1) going false curRow -1 = 1
 
 // console.log(zigzagConvert("PAYPALISHIRING", 3)); // Output: "PAHNAPLSIIGYIR"
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
-// 12. longestPalindrome
-function longestPalindrome(s) {
-  if (s.length < 2) return s;
-
-  let start = 0, maxLength = 1;
-
-  function expandAroundCenter(left, right) {
-      while (left >= 0 && right < s.length && s[left] === s[right]) {
-          left--;
-          right++;
+// 14. Longest Common Prefix
+const longestCommonPrefix = (arr) => {
+  let prefix = "";
+  let flag = true;
+  for (i = 0; i < arr[0].length; i++) {
+    let firstPrex = arr[0][i];
+    for (j = 1; j < arr.length; j++) {
+      if (arr[j][i] !== firstPrex) {
+        flag = false;
+        break;
       }
-      return right - left - 1;
+    }
+    if (flag) {
+      prefix += firstPrex;
+    }
   }
-
-  for (let i = 0; i < s.length; i++) {
-      let len1 = expandAroundCenter(i, i);        // Odd length palindromes
-      let len2 = expandAroundCenter(i, i + 1);    // Even length palindromes
-      let len = Math.max(len1, len2);
-
-      if (len > maxLength) {
-          maxLength = len;
-          start = i - Math.floor((len - 1) / 2);
-      }
-  }
-
-  return s.substring(start, start + maxLength);
-}
-
+};
 // Example usage:
-console.log(longestPalindrome("babad")); // Output: "bab" or "aba"
-console.log(longestPalindrome("cbbd"));  // Output: "bb"
+console.log(longestCommonPrefix(["flower", "flow", "flight"])); // Output: "fl"
