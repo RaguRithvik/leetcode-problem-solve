@@ -110,14 +110,13 @@ const lengthOfLongestSubstring = (s) => {
   const seen = new Map();
   for (let i = 0; i < s.length; i++) {
     if (seen.has(s[i])) {
-      start = Math.max(seen.get(s[i]), start);
-      // start = Math.max(seen.get(s[i]) + 1, start);
+      start = Math.max(seen.get(s[i]) + 1, start);
     }
     seen.set(s[i], i);
-    maxLength = Math.max(maxLength, i - start);
-    // maxLength = Math.max(maxLength, i - start + 1);
+    maxLength = Math.max(maxLength, i - start + 1);
   }
   return maxLength;
+  //pending explaination
 };
 // console.log(lengthOfLongestSubstring("baabgh")); // Output should be 3
 // -----------------------------------------------------------------------------------------------------
@@ -215,14 +214,24 @@ const longestCommonPrefix = (arr) => {
       prefix += firstPrex;
     }
   }
-    return prefix
+  return prefix;
 };
 // firstPrex = arr[0][i] = f -> ["flower"]arr[0] ->farr[0][i]
 // first first array to to next to two array
 //for (j = 1; j < arr.length; j++) // j =1 because [1][0] flow [2][0] flight
-// arr[j][i] f a[1]--a[0] j++ j= 2
-// arr[j][i] f a[2]--a[0] j++ j =3 j < arr.length(3<3) flase comes out to 2nd for loop i++ i =1
-// arr[j][i] l a[1]--a[1]        
-// arr[j][i] l a[2]--a[1]
-// arr[j][i] o a[1]--a[2] flag false and break 2nd for loop flag true value accept fl return 
+// con01
+// i =0, j =1, arr[0][i] == f 
+// arr[j][i] f == f arr[0][i] j++ j= 2
+// arr[j][i] f == f arr[0][i] j++ j =3 j < arr.length(3<3) flase comes out to 2nd loop i++ i =1
+// con02
+// i =1, j =1, arr[0][i] == l
+// arr[j][i] l == l arr[0][i]
+// arr[j][i] l == l arr[0][i]
+ // con03
+// i =1, j =1, arr[0][i] == 0
+// arr[j][i] o == o arr[0][i]
+// arr[j][i] i == o arr[0][i] flag false and break 2nd for loop 
+// flag true value accept fl return
 console.log(longestCommonPrefix(["flower", "flow", "flight"])); // Output: "fl"
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
