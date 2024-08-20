@@ -4,14 +4,13 @@ const towSum = (nums, target) => {
   for (i = 0; i < nums.length; i++) {
     for (j = i + 1; j < nums.length; j++) {
       if (nums[i] + nums[j] == target) {
-        data.push(i);
-        data.push(j);
+        data.push(i, j);
       }
     }
   }
   return data;
 };
-console.log(towSum([2, 7, 11, 15], 9));
+// console.log(towSum([2, 7, 11, 15], 9));
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
 // 02 - find index first occurence in string
