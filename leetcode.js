@@ -215,6 +215,7 @@ const longestCommonPrefix = (arr) => {
       prefix += firstPrex;
     }
   }
+  return prefix
 };
 // firstPrex = arr[0][i] = f -> ["flower"]arr[0] ->farr[0][i]
 // first first array to to next to two array
