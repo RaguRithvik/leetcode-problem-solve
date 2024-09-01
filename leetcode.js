@@ -10,6 +10,8 @@ const towSum = (nums, target) => {
   }
   return data;
 };
+//--Explaination--
+// if(nums[0]+nums[1]) = 2 +7 = 9 target then push data i and j
 // console.log(towSum([2, 7, 11, 15], 9));
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
@@ -29,6 +31,11 @@ const subStrCheck = (mainstr, subStr) => {
   }
   return -1;
 };
+//--Explaination--
+//mainstr[0 + 0] !== subStr[0]
+//mainstr[0] !== subStr[0] l !== c flag false then break i++ i =1 but j =0  bcz break 2nd for loop
+//mainstr[4] == subStr[0]
+// if(falg) return i -- i =4 then codes words match i = 8
 // console.log(subStrCheck("leetcodes", "codes"));
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
@@ -46,7 +53,23 @@ const isAnagram = (s, t) => {
   }
   // return map.size === 0;
 
-  //second
+  //--Explaination--
+  // first for loop---
+  // map.set(s[i], (map.get(s[i]) || 0) + 1);
+  // map(key, value)
+  //map(a, 1) same value occur +1 suppose a occurs again a already values
+  //suppose a values 2 now add 2+1 = 3 map = map({a, 3}, {n, 1})
+  // --
+  // 2nd for loop---
+  // map.has(t[i]) check any unwanted key means map(s[i]) z map(t[i]) y return false
+  // map.set(t[i], map.get(t[i]) - 1);
+  // same values occurs minus values to map
+  // map(a, 3) -- map(a, 2)
+  // if (map.get(t[i]) === 0) map.delete(t[i]);
+  // map(a, 0) if any values 0 delete key suppose a =0 delete to map
+  // return map.size === 0; suppose all value 0 return true
+
+  //--second
   for (i = 0; i < s.length; i++) {
     if (map[s[i]]) map[s[i]]++;
     else map[s[i]] = 1;
@@ -57,7 +80,7 @@ const isAnagram = (s, t) => {
   }
   // return true;
 
-  //third
+  //--third--
   let usedIndices = new Set();
   for (let i = 0; i < s.length; i++) {
     let found = false;
@@ -70,6 +93,7 @@ const isAnagram = (s, t) => {
     }
     if (!found) return false;
   }
+  return true;
   // { 1 } a
   // i[0]--a == j[0]--n flase j=1
   // i[0]--a == j[1]--a true {1} break j =0, i=1
@@ -84,7 +108,6 @@ const isAnagram = (s, t) => {
   // { 1, 0, 3, 2, 4 }
   // { 1, 0, 3, 2, 4, 5 }
   // { 1, 0, 3, 2, 4, 5, 6 }
-  return true;
 };
 // console.log(isAnagram("anagram", "nagaram"));
 // -----------------------------------------------------------------------------------------------------
@@ -235,3 +258,5 @@ const longestCommonPrefix = (arr) => {
 console.log(longestCommonPrefix(["flower", "flow", "flight"])); // Output: "fl"
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
+
+
