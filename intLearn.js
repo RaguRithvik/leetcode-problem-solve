@@ -84,3 +84,19 @@
 //   result.push(arr[i]);
 // }
 // console.log(result, "result");
+
+//28-10-2024
+// 06. interview task
+// 01. console.log("2"+"2"-0);
+//02. Obj push data
+const a = {};
+const b = { name: "ragu1" };
+const c = { name: "ragu2" };
+a[b] = { name: "ragu3" };
+a[c] = { name: "ragu4" };
+
+// Explanation
+// A initially empty object then a key value is object then values name value{ "[object Object]": { "name": "ragu4" } }
+
+// console.log(a[b]);
+// console.log(a);
