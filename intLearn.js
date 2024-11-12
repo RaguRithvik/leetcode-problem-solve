@@ -89,14 +89,69 @@
 // 06. interview task
 // 01. console.log("2"+"2"-0);
 //02. Obj push data
-const a = {};
-const b = { name: "ragu1" };
-const c = { name: "ragu2" };
-a[b] = { name: "ragu3" };
-a[c] = { name: "ragu4" };
+// const a = {};
+// const b = { name: "ragu1" };
+// const c = { name: "ragu2" };
+// a[b] = { name: "ragu3" };
+// a[c] = { name: "ragu4" };
 
 // Explanation
 // A initially empty object then a key value is object then values name value{ "[object Object]": { "name": "ragu4" } }
 
 // console.log(a[b]);
 // console.log(a);
+
+// ---11-12-2024----
+// 07. arr concept
+// const arr = [1, 2, 3][1, 2, 3]
+// console.log(arr) // undefined because a[0] = 1 but you provide a[1, 2, 3]
+
+//08. obj concept
+// const obj1 = { 1: "A1" };
+// const obj = { 1: 1, 2: 1, 1: 2, 1: 3, [1]: "5", [obj1]: "A2", obj1: "A3" };
+// console.log(obj);
+//{ '1': '5', '2': 1, '[object Object]': 'A2', obj1: 'A3' }
+//obj take last key value 1: 3 then [1] also 1 why array value convert string 
+//then check primtive value 1 smae [obj1] but side here non primitive value
+//[] to "" then obj1 is object finally '[object Object]'
+
+//09 code explain
+// {
+//     function fn(){
+//         console.log("hello")
+//     }
+// }
+// fn()
+//Explaination
+// {} -- block-scoped
+// fn() -- hoisting
+// Calling the Function: When you call fn() outside the block, 
+//JavaScript recognizes it due to hoisting and executes the function,
+
+// 09.1
+// "use strict";
+// {
+//     function fn() {
+//         console.log("hello");
+//     }
+// }
+// fn(); // Error: fn is not defined
+
+// explain
+// Non-strict mode: The function is accessible outside the block due to hoisting.
+// Strict mode: The function is restricted to the block scope.
+
+// 10.
+// "use strict"
+// var x = 100
+// var y = 200
+// z =200 // use strict z is not defined
+// console.log(x, y, z);
+
+//11.
+function fn(){
+    return 100
+}
+var fn
+console.log(fn)
+
