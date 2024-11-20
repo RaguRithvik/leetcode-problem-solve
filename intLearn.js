@@ -227,3 +227,16 @@
 // Since NaN is not equal to any value, including itself, NaN === NaN is also false.
 // Output: false.
 
+// const arr = [1, 6, 78, 3, 5, 6, 3, 9, 34];
+// const result = [];
+// for (i = 0; i <= arr.length - 3; i++) {
+//   let max = arr[i];
+//   for (j = 1; j < 3; j++) {
+//     if (arr[i + j] > max) {
+//       max = arr[i + j];
+//     }
+//   }
+//   result.push(max);
+// }
+// console.log(result, "result");
+
