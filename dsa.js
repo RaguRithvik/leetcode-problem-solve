@@ -59,7 +59,7 @@ const inselectionSort = (arr) => {
     while (j >= 0 && arr[j] > currentIndex) {
       arr[j + 1] = arr[j];
       j--;
-      console.log(arr, "arr");
+      // console.log(arr, "arr");
     }
     arr[j + 1] = currentIndex;
   }
@@ -129,7 +129,38 @@ const margeFun = (leftArr, rightArr) => {
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
 //06. Quicksort
-// console.log(Quicksort([-2, 5, 100, -7, 8, 1, 45, 99]))
-// -----------------------------------------------------------------------------------------------------
-// -----------------------------------------------------------------------------------------------------
+function Quicksort(arr) {
+  //if array reached length 1 return array
+  if (arr.length <= 1) {
+    return arr;
+  }
+  const pivot = arr[0]; // get first value
+  const left = []; //
+  const right = []; //
 
+  for (i = 1; i < arr.length; i++) {
+    if (arr[i] < pivot) {
+      left.push(arr[i]);
+    } else {
+      right.push(arr[i]);
+    }
+  }
+  return [...Quicksort(left), pivot, ...Quicksort(right)];
+}
+console.log(Quicksort([-2, 5, 100, -7, 8, 1, 45, 99]));
+//Explanation
+// pivot = first index [-2]
+//left small value [-7][-2]
+//right higher value [-2][5, 100, 8, 1, 45, 99]
+//[-7] left value length reached return array
+//[-7, -2]
+//[5, 100, 8, 1, 45, 99]
+//[1]-[5]-[100, 8, 45, 99]
+//[-7, -2, 1, 5]
+//[100, 8, 45, 99]
+//[8, 45, 99]-[100]-no right
+//[8][45, 99][100]
+//[8]-[45]-[99]-[100]
+//[-7, -2, 1, 5, 8, 54, 99, 100]
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------

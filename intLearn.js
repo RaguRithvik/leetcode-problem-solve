@@ -227,8 +227,10 @@
 // Since NaN is not equal to any value, including itself, NaN === NaN is also false.
 // Output: false.
 
-// const arr = [1, 6, 78, 3, 5, 6, 3, 9, 34];
-// const result = [];
+//---20-11-2024---
+const arr = [1, 6, -8, 45, -5, 6, 3, -9, 34];
+const result = [];
+//slidingwindow
 // for (i = 0; i <= arr.length - 3; i++) {
 //   let max = arr[i];
 //   for (j = 1; j < 3; j++) {
@@ -239,4 +241,17 @@
 //   result.push(max);
 // }
 // console.log(result, "result");
-
+// kadane's algorithm check entrire array
+let max = arr[0];
+for (i = 0; i < arr.length; i++) {
+  let currentsum = 0;
+  for (j = i + 1; j < arr.length; j++) {
+    currentsum = currentsum + arr[j];
+    if (currentsum > max) {
+      max = currentsum;
+      result.push(arr[j])
+    //   result.splice(i, j);
+    }
+  }
+}
+console.log(max, "max", result);
