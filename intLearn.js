@@ -1,5 +1,6 @@
 //------ 01-21-10-2024 ------
-// const nestedArray = [2, 3, 4, [5, [6, 7, 8, [9, 10, 11], 12], 13], 14, 15];
+// 01
+//const nestedArray = [2, 3, 4, [5, [6, 7, 8, [9, 10, 11], 12], 13], 14, 15];
 // function flattenArray(arr) {
 //   let result = []; // Create an empty result array
 //   for (let i = 0; i < arr.length; i++) {
@@ -22,6 +23,7 @@
 // console.log(flatArray);
 
 //------ 02-22-10-2024 ------
+// 02.
 // const one = false || {} || null
 // const two = null || "" || false
 // const three = [] || 0 || true
@@ -32,6 +34,7 @@
 // console.log(one, two, three)
 
 //------ 03 - 02-22-2024 ------
+//03.
 // const data = [2, 3, 6, 8, 2, 10, 20, 1];
 // let i = 0;
 // let isStatus = true;
@@ -85,8 +88,9 @@
 
 //-------28-10-2024-------------
 // 06. interview task
-// 01. console.log("2"+"2"-0);
-//02. Obj push data
+
+// console.log("2"+"2"-0);
+//07. Obj push data
 // const a = {};
 // const b = { name: "ragu1" };
 // const c = { name: "ragu2" };
@@ -228,8 +232,8 @@
 // Output: false.
 
 //---20-11-2024---
-const arr = [1, 6, -8, 45, -5, 6, 3, -9, 34];
-const result = [];
+// const arr = [1, 6, -8, 45, -5, 6, 3, -9, 34];
+// const result = [];
 //slidingwindow
 // for (i = 0; i <= arr.length - 3; i++) {
 //   let max = arr[i];
@@ -242,16 +246,58 @@ const result = [];
 // }
 // console.log(result, "result");
 // kadane's algorithm check entrire array
-let max = arr[0];
-for (i = 0; i < arr.length; i++) {
-  let currentsum = 0;
-  for (j = i + 1; j < arr.length; j++) {
-    currentsum = currentsum + arr[j];
-    if (currentsum > max) {
-      max = currentsum;
-      result.push(arr[j])
-    //   result.splice(i, j);
-    }
-  }
-}
-console.log(max, "max", result);
+// let max = arr[0];
+// for (i = 0; i < arr.length; i++) {
+//   let currentsum = 0;
+//   for (j = i + 1; j < arr.length; j++) {
+//     currentsum = currentsum + arr[j];
+//     if (currentsum > max) {
+//       max = currentsum;
+//       result.push(arr[j]);
+//       //   result.splice(i, j);
+//     }
+//   }
+// }
+// console.log(max, "max", result);
+
+// -----27/12/2024--------
+// function sum(a= 100, b =200){
+//   console.log(a+b)
+// }
+// // sum(null, 20) -->200
+// function sum(a= 100, b =200){
+//   console.log(a+b)
+// }
+// // sum(undefined, 20) -->300
+
+// console.log(undefined + 2); -->NaN
+
+// const arr = [0, 1, 2, 3, 4, 5];
+// arr.forEach((element) => {
+//   console.log(element);
+//   if (element === 3) {
+//     arr.length = 0;
+//   }
+// });
+
+//Array lenth zero logic
+//01
+// const arr = [1, 2];
+// arr.length = 0;
+// console.log(arr);
+//02
+// arr = [];
+// console.log(arr, "1");
+//03
+// arr.splice(0, arr.length);
+// arr.splice(0);
+// console.log(arr, "2");
+
+// const arr = [1, 2, 3, 4, 5, 6, 7, 8]
+// undefined
+// console.log(arr.unshift(30))
+// console.log(arr)
+// 9
+// (9) [30, 1, 2, 3, 4, 5, 6, 7, 8]
+
+

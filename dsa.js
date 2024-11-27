@@ -70,37 +70,17 @@ const inselectionSort = (arr) => {
 // -----------------------------------------------------------------------------------------------------
 // 05.Mergesort
 const margesort = (arr) => {
-  // console.log(arr, "leftArr");
-  if (arr.length < 2) return arr;
+  if (arr.length <= 1) {
+    return arr;
+  }
   const midIndex = Math.floor(arr.length / 2);
   const leftArr = margesort(arr.slice(0, midIndex));
   const rightArr = margesort(arr.slice(midIndex));
   return margeFun(leftArr, rightArr);
 };
 const margeFun = (leftArr, rightArr) => {
-  // const result = [];
-  // let leftIndex = 0;
-  // let rightIndex = 0;
-  // console.log(leftArr, rightArr);
-  // while (leftArr.length > leftIndex && rightArr.length > rightIndex) {
-  //   if (leftArr[leftIndex] < rightArr[rightIndex]) {
-  //     result.push(leftArr[leftIndex]);
-  //     leftIndex++;
-  //   } else {
-  //     result.push(rightArr[rightIndex]);
-  //     rightIndex++;
-  //   }
-  // }
-  // while (leftArr.length > leftIndex) {
-  //   result.push(leftArr[leftIndex]);
-  //   leftIndex++;
-  // }
-  // while (rightArr.length > rightIndex) {
-  //   result.push(rightArr[rightIndex]);
-  //   rightIndex++;
-  // }
   const result = [];
-  while (leftArr.length > 0 && rightArr.length > 0) {
+  while (leftArr?.length > 0 && rightArr?.length > 0) {
     if (leftArr[0] <= rightArr[0]) {
       result.push(leftArr.shift());
     } else {
@@ -110,22 +90,21 @@ const margeFun = (leftArr, rightArr) => {
   }
 };
 //logic
-//[-2, 5, 100, -7, 8, 1, 45, 99]
-//Left
-// left<right
-// [-2, 5, 100, -7]
-// [[-2, 5] [100, -7]]
-// [-2] < [100] -2 true take left value
-// [5] < [-7] -7
-// [-2, -7]
-//Right
-// [8, 1, 45, 99]
-// [[8,1] [45, 99]]
-// [45] > [8] 8 suppose true take right value
-// [99] > [1 ] 1
-// [8, 1]
-// [1]
-// console.log(margesort([-2, 5, 100, -7, 8, 1, 45, 99]), "final");
+// Input: [-2, 5, 100, -7]
+//              margesort([-2, 5, 100, -7])
+//              /                       \
+//     margesort([-2, 5])          margesort([100, -7])
+//        /      \                   /         \
+// margesort([-2]) margesort([5]) margesort([100]) margesort([-7])
+//    |                 |             |                |
+//   [-2]              [5]          [100]            [-7]
+//      \              /                \              /
+//     margeFun([-2], [5])          margeFun([100], [-7])
+//             [-2, 5]                     [-7, 100]
+//                   \                     /
+//             margeFun([-2, 5], [-7, 100])
+//                    [-7, -2, 5, 100]
+// console.log(margesort([-2, 5, 100, -7, 8, 1, 45, 99]), "marge");
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
 //06. Quicksort
@@ -147,7 +126,7 @@ function Quicksort(arr) {
   }
   return [...Quicksort(left), pivot, ...Quicksort(right)];
 }
-console.log(Quicksort([-2, 5, 100, -7, 8, 1, 45, 99]));
+// console.log(Quicksort([-2, 5, 100, -7, 8, 1, 45, 99]));
 //Explanation
 // pivot = first index [-2]
 //left small value [-7][-2]
@@ -161,6 +140,12 @@ console.log(Quicksort([-2, 5, 100, -7, 8, 1, 45, 99]));
 //[8, 45, 99]-[100]-no right
 //[8][45, 99][100]
 //[8]-[45]-[99]-[100]
+//
+// [ -7 ] [left]- -2 -[pivot]- [ 5, 100, 8, 1, 45, 99 ] [right]
+// [ 1 ] [left]- 5 -[pivot]- [ 100, 8, 45, 99 ] [right]
+// [ 8, 45, 99 ] [left]- 100 -[pivot]- [] [right]
+// [] [left]- 8 -[pivot]- [ 45, 99 ] [right]
+// [] [left]- 45 -[pivot]- [ 99 ] [right]
 //[-7, -2, 1, 5, 8, 54, 99, 100]
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
