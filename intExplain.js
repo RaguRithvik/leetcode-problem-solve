@@ -150,11 +150,11 @@
 // function sum(a= 100, b =200){
 //   console.log(a+b)
 // }
-// // sum(null, 20) -->200
+// // sum(null, 20) -->200 a values is null null is value a is null passed (null, 200) (null+200) = 200
 // function sum(a= 100, b =200){
 //   console.log(a+b)
 // }
-// // sum(undefined, 20) -->300
+// // sum(undefined, 20) -->300 a values is undefined so that a take 100 + b
 
 // console.log(undefined + 2); -->NaN
 
@@ -162,7 +162,7 @@
 // arr.forEach((element) => {
 //   console.log(element);
 //   if (element === 3) {
-//     arr.length = 0;
+//     arr.length = 0; // [0, 1, 2, 3] when reached 3 we have to arr.length = 0 so that arr looped is stop
 //   }
 // });
 
@@ -284,3 +284,26 @@
 // console.log(null ?? "Default"); // "Default"
 // console.log(undefined ?? "Fallback"); // "Fallback"
 // console.log(0 ?? "Should not replace"); // 0
+
+// let x;
+// let y;
+// x = y = 12; // Explicitly declare both variables
+// console.log(x, y); // Outputs: 12 12
+
+// ReferenceError. This is because variables declared using var (or not declared at all) are hoisted but not initialized until the code execution reaches the assignment.
+
+// console.log(x, y); // ReferenceError: x is not defined
+
+// "3" + 12 * 5(360)--> 12* 5 "3"+60 => "360"
+
+//"3" + 12 * 5 / 2 +"1" ->
+// 12 * 5 / 2
+//60/2 -> 30
+// "3" + 30 + "1" -> 3301
+
+// "3" ** 3 square root -> 27
+
+//3+"3"*3 -> 
+// "3" * 3 = 3+9 "39"
+
+// 3+"3"+30 => "3330"
