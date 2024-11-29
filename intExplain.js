@@ -307,3 +307,34 @@
 // "3" * 3 = 3+9 "39"
 
 // 3+"3"+30 => "3330"
+
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+// 29-11-2024
+// 01.
+// Expression	Result	Explanation
+// [] == []	false	Different array references.
+// {} === {}	false	Different object references.
+// {} == {}	false	Different object references, even with type coercion.
+// [] === []	false	Strict equality requires the same reference, which these arrays don’t share.
+// [] == ""	true	Type coercion converts the empty array to an empty string, resulting in equal values.
+
+// 02.
+// let person = {name :"ragu"}
+// const mem = [person]
+// person = null
+// console.log(mem)
+
+// Primitive Values vs References:
+
+// In JavaScript, objects (like { name: "ragu" }) are stored as references in memory.
+// When you assign person to mem, it does not copy the object itself. Instead, mem stores a reference to the same object in memory.
+// Reassigning person:
+
+// When you do person = null, you are only updating the variable person to point to null.
+// The original object ({ name: "ragu" }) in memory is still referenced by mem.
+
+// Summary:
+// person and mem initially share a reference to the same object.
+// Reassigning person to null does not affect the reference stored in mem.
+// The object { name: "ragu" } remains in memory as long as mem references it.
