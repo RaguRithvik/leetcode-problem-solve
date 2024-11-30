@@ -1,5 +1,6 @@
-
-//-------28-10-2024-------------
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+//28-10-2024
 // console.log("2"+"2"-0); // 0 Number
 
 // const a = {};
@@ -303,7 +304,7 @@
 
 // "3" ** 3 square root -> 27
 
-//3+"3"*3 -> 
+//3+"3"*3 ->
 // "3" * 3 = 3+9 "39"
 
 // 3+"3"+30 => "3330"
@@ -338,3 +339,33 @@
 // person and mem initially share a reference to the same object.
 // Reassigning person to null does not affect the reference stored in mem.
 // The object { name: "ragu" } remains in memory as long as mem references it.
+
+// 03.
+//debounce
+// function handleOnchange(params) {
+//     console.log("1 minutes delay", params);
+//   }
+//   function debouce(callback, delay) {
+//     let timerId;
+//     clearTimeout(timerId)
+//     return function (...arg) {
+//       //[...arg] why because when user type any character one by one like this(r)(a)(g)(u) we need marge [ragu]
+//       timerId = setTimeout(() => {
+//         callback(...arg); // then array spead opreater to [ragu] --> ragu then pass agrugment
+//       }, delay);
+//     };
+
+//   }
+//   function nameFn(params) {
+//   // we want call handleOnchange with 8 seconds
+//     let val = debouce(handleOnchange, 1000);
+//     val(params);
+//   }
+//   nameFn("ragu");->nameFn("r")nameFn("a")nameFn("g")nameFn("u")
+// 04
+"use strict"; x =10;  console.log(x); var x = 10
+
+let xyz = 1 + abc;
+abc = 100
+console.log(xyz, abc)
+

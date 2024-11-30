@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" placeholder="Enter Search" onchange="debouncedNameFn(event)">
+    <script>
+        function handleOnchange(value) {
+            alert(`Your letter is ${value}`);
+        }
+
+        // Debounce function implementation
+        function debounce(callback, delay) {
+            let timerId;
+            return function (...args) {
+                clearTimeout(timerId); // Clear the previous timer
+                timerId = setTimeout(() => {
+                    callback(...args); // Call the callback with the latest arguments
+                }, delay);
+            };
+        }
+
+        // Create a debounced version of handleOnchange
+        const debouncedHandleOnchange = debounce(handleOnchange, 1000);
+
+        function debouncedNameFn(event) {
+            const value = event.target.value; // Fetch the input value
+            debouncedHandleOnchange(value);  // Call the debounced function
+        }
+    </script>
+</body>
+
+</html>

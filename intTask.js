@@ -21,6 +21,31 @@
 // [0, 1, 2, 3,[4], 5, 6]
 // const flatArray = flattenArray(nestedArray);
 // console.log(flatArray);
+
+// 02
+// function isAnagram(a, b) {
+//   const sObj = {};
+//   for (i = 0; i < a.length; i++) {
+//     sObj[a[i]] = sObj[a[i]] ? sObj[a[i]] + 1 : 1;
+//   }
+//   for (i = 0; i < b.length; i++) {
+//     sObj[b[i]] = sObj[b[i]] ? sObj[b[i]] - 1 : 1;
+//   }
+//   return Object.values(sObj).every((ev) => ev == 0);
+// }
+// console.log(isAnagram("anagram", "nagarma"));
+// 03
+// function objectReAssign(values) {
+//   for (let object in values) {
+//     if (typeof values[object] == "object" && values[object] != null) {
+//       for (let innerObj in values[object]) {
+//         values[object + "-" + innerObj] = values[object][innerObj];
+//       }
+//       delete values[object];
+//     }
+//   }
+// }
+// console.log(objectReAssign({"row-number": 1, "roll-number": 2,"b2b-price": {"tax-value": 30,"service-value": 40,"addition-value": 70,"amenity-value": 90, "net-value": 100}  }));
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
 //------ 02-22-10-2024 ------
