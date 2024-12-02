@@ -72,11 +72,10 @@ function isValidSudoku(board) {
     for (let j = 0; j < 9; j++) {
       const currentValue = board[i][j];
       if (currentValue !== ".") {
-        
         const num = currentValue - "1"; // Convert char to number 0-8
         const boxIndex = Math.floor(i / 3) * 3 + Math.floor(j / 3); // Calculate box index
         // console.log("num", rows[i][num], cols[j][num], boxes[boxIndex][num]);
-        console.log(`rows[${i}][${num}]`, `cols[${j}][${num}]`, `[${boxIndex}][${num}]`);
+        // console.log(`rows[${i}][${num}]`, `cols[${j}][${num}]`, `[${boxIndex}][${num}]`);
         if (rows[i][num] || cols[j][num] || boxes[boxIndex][num]) {
           return false;
         }
@@ -91,4 +90,59 @@ function isValidSudoku(board) {
 
   return true;
 }
-console.log(isValidSudoku(board));
+// console.log(isValidSudoku(board));
+class ListNode {
+  constructor(val = 0, next = null) {
+      this.val = val;
+      this.next = next;
+  }
+}
+
+// var addTwoNumbers = function(l1, l2) {
+//   let dummy = new ListNode(0);
+//   let current = dummy;
+//   let carry = 0;
+  
+//   while (l1 || l2 || carry) {
+//       let sum = (l1 ? l1.val : 0) + (l2 ? l2.val : 0) + carry;
+//       carry = Math.floor(sum / 10);
+      
+//       current.next = new ListNode(sum % 10);
+//       current = current.next;
+      
+//       l1 = l1 ? l1.next : null;
+//       l2 = l2 ? l2.next : null;
+//   }
+  
+//   return dummy.next;
+// };
+// Helper function to create a linked list from an array
+function createLinkedList(arr) {
+  let dummy = new ListNode(0);
+  let current = dummy;  
+
+  for (let num of arr) {
+      current.next = new ListNode(num);
+      current = current.next;
+  }
+  return dummy.next;
+}
+
+// Helper function to convert a linked list to an array
+// function printLinkedList(head) {
+//   let result = [];
+//   while (head) {
+//       result.push(head.val);
+//       head = head.next;
+//   }
+//   return result;
+// }
+
+// Example
+let l1 = createLinkedList([2, 4, 3]); // 342
+console.log(l1, "L1");
+  
+// let l2 = createLinkedList([5, 6, 4]); // 465
+
+// let result = addTwoNumbers(l1, l2);
+// console.log(printLinkedList(result)); // [7, 0, 8]
