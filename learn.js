@@ -100,6 +100,94 @@ class Node {
     this.next = next;
   }
 }
-const n1 = new Node(200)
-console.log(n1); //{ data: 200, next: null }
-
+// const n1 = new Node(200)
+// console.log(n1); //{ data: 200, next: null }
+class LinkedList {
+  constructor() {
+    this.head = null;
+    this.size = 0;
+  }
+  //Method
+  //Insert first Node
+  insertFirst(data) {
+    this.head = new Node(data, this.head); //head
+  }
+  //Insert Last Node
+  insertLastNode(data) {
+    let node = new Node(data); //Node { data: 300, next: null }
+    let current;
+    //suppose head is empty add first
+    if (!this.head) {
+      this.head = node;
+    }
+    //
+    else {
+      current = this.head; //Node { data: 200, next: Node { data: 100, next: null } } --> old
+      while (current.next) {
+        current = current.next;
+      }
+      current.next = node;
+    }
+    this.size++;
+    //console.log(current, "current"); //Node { data: 100, next: Node { data: 300, next: null } }
+  }
+  //Insert at index
+  insertAtIndex(data, index) {
+    //data= 600 index is 7
+    //6 > 0 && 6 > 3 //first if return
+    if (index > 0 && index > this.size) {
+      return;
+    }
+    if (index == 0) {
+      this.head = new Node(data, this.head); //head
+    }
+    const node = new Node(data);
+    let current, previous;
+    //set current first
+    current = this.head;
+    let count = 0;
+    while (count < index) {
+      previous = current; // Node before index
+      count++;
+      current = current.next; //Node after index
+    }
+    node.next = current;
+    previous.next = node;
+    this.size++;
+  }
+  //Get at index
+  //Remove at index
+  //clear the indx
+  //print the list data
+  printListData() {
+    let current = this.head; //head: Node { data: 300, next: Node { data: 200, next: null }
+    while (current) {
+      // console.log(current.data, "data");
+      current = current.next;
+    }
+  }
+}
+const l1 = new LinkedList(); // get LinkedList --> Node
+l1.insertFirst(100); // LintedList { head: Node { data: 100, next: null }, size: 0 }
+l1.insertFirst(200); //LinkedList {head: Node { data: 200, next: Node { data: 100, next: null } }, size: 0}
+// l1.printListData(); // 300 data // 200 data
+l1.insertLastNode(300); // 300 data // 200 data
+//l1.insertAtIndex(400, 6); // not working size 3 but our index 6 so flase
+l1.insertAtIndex(400, 1);
+// console.log(JSON.stringify(l1), "l1head");
+// const log = {
+//   head: {
+//     data: 200,
+//     next: {
+//       data: 400,
+//       next: {
+//         data: 100,
+//         next: {
+//           data: 300,
+//           next: null,
+//         },
+//       },
+//     },
+//   },
+//   size: 2,
+// };
