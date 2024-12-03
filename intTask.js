@@ -144,5 +144,18 @@
 //   }
 // }
 // console.log(max, "max", result);
+
+// function name(params) {
+//     let number = params
+//     let reverse = 0
+//     while (number > 0) {
+//        const lastNum = Math.floor(number % 10);
+//        reverse = reverse * 10 + lastNum
+//        number = Math.floor(number / 10);
+//     }
+//     return reverse
+// }
+// console.log(name(213))
+
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------

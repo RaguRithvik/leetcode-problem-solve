@@ -375,9 +375,50 @@
 //   }
 //   nameFn("ragu");->nameFn("r")nameFn("a")nameFn("g")nameFn("u")
 // 04
-"use strict"; x =10;  console.log(x); var x = 10
+// "use strict"; x =10;  
+// console.log(x);
+// x is not declared using var, let, or const, it will throw a ReferenceError
 
-let xyz = 1 + abc;
-abc = 100
-console.log(xyz, abc)
+// 05
+// let xyz = 1 + abc;
+// abc = 100
+// console.log(xyz, abc)
+// ReferenceError
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+// 04-12-2024
+// 01.
+// var a = 20;
+// console.log(a); // Outputs: 20
+// function a() {
+//     console.log("20");
+// }
+// a(); // Throws: Uncaught TypeError: a is not a function
+
+// Functions are hoisted first, but var declarations overwrite them during runtime. 
+// So, after var a = 20, a becomes a number, not a function. Hence, calling a() throws an error.
+
+// 02.
+// console.log(Array(1, 2))
+// (2) [1, 2]
+// console.log(Array(1))
+// [empty]
+// Key Differences:
+// Multiple arguments: They are treated as the actual elements of the array.
+// Single numeric argument: It specifies the length of the array (empty slots).
+
+// 03.
+// console.log(Number.isNaN(NaN)); // true
+// console.log(Number.isNaN("NaN")); // false (string is not coerced)
+// console.log(Number.isNaN(undefined)); // false
+
+// The method Number.isNaN() checks if a given value is exactly the special NaN value
+
+// console.log(Object.is(NaN, NaN)); // true
+// console.log(Object.is(+0, -0));   // false
+// console.log(Object.is(5, 5));     // true
+
+// Object.is same value comparison
+
+
 
