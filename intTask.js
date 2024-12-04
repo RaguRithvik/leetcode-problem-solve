@@ -1,63 +1,52 @@
 //------ 01-21-10-2024 ------
 // 01
-//const nestedArray = [2, 3, 4, [5, [6, 7, 8, [9, 10, 11], 12], 13], 14, 15];
-// function flattenArray(arr) {
-//   let result = []; // Create an empty result array
-//   for (let i = 0; i < arr.length; i++) {
-//     if (Array.isArray(arr[i])) {
-//       // If it's an array, recursively flatten
-//       const flatSubArray = flattenArray(arr[i]);
-//       for (let j = 0; j < flatSubArray.length; j++) {
-//         result[result.length] = flatSubArray[j]; // Manually add to result
-//       }
-//     } else {
-//       // If it's not an array, add the element manually
-//       result[result.length] = arr[i];
-//     }
-//   }
-//   return result; // Return the flattened array
-// }
+const nestedArray = [2, 3, 4, [5, [6, 7, 8, [9, 10, 11], 12], 13], 14, 15];
+function flattenArray(arr) {
+  let result = []; // Create an empty result array
+  for (let i = 0; i < arr.length; i++) {
+    if (Array.isArray(arr[i])) {
+      // If it's an array, recursively flatten
+      const flatSubArray = flattenArray(arr[i]);
+      for (let j = 0; j < flatSubArray.length; j++) {
+        result[result.length] = flatSubArray[j]; // Manually add to result
+      }
+    } else {
+      // If it's not an array, add the element manually
+      result[result.length] = arr[i];
+    }
+  }
+  return result; // Return the flattened array
+}
 // //Explanation
 // [0, 1, 2, 3,[4], 5, 6]
-// const flatArray = flattenArray(nestedArray);
+const flatArray = flattenArray(nestedArray);
 // console.log(flatArray);
 
 // 02
-// function isAnagram(a, b) {
-//   const sObj = {};
-//   for (i = 0; i < a.length; i++) {
-//     sObj[a[i]] = sObj[a[i]] ? sObj[a[i]] + 1 : 1;
-//   }
-//   for (i = 0; i < b.length; i++) {
-//     sObj[b[i]] = sObj[b[i]] ? sObj[b[i]] - 1 : 1;
-//   }
-//   return Object.values(sObj).every((ev) => ev == 0);
-// }
+function isAnagram(a, b) {
+  const sObj = {};
+  for (i = 0; i < a.length; i++) {
+    sObj[a[i]] = sObj[a[i]] ? sObj[a[i]] + 1 : 1;
+  }
+  for (i = 0; i < b.length; i++) {
+    sObj[b[i]] = sObj[b[i]] ? sObj[b[i]] - 1 : 1;
+  }
+  return Object.values(sObj).every((ev) => ev == 0);
+}
 // console.log(isAnagram("anagram", "nagarma"));
+
 // 03
-// function objectReAssign(values) {
-//   for (let object in values) {
-//     if (typeof values[object] == "object" && values[object] != null) {
-//       for (let innerObj in values[object]) {
-//         values[object + "-" + innerObj] = values[object][innerObj];
-//       }
-//       delete values[object];
-//     }
-//   }
-// }
+function objectReAssign(values) {
+  for (let object in values) {
+    if (typeof values[object] == "object" && values[object] != null) {
+      for (let innerObj in values[object]) {
+        values[object + "-" + innerObj] = values[object][innerObj];
+      }
+      delete values[object];
+    }
+  }
+}
 // console.log(objectReAssign({"row-number": 1, "roll-number": 2,"b2b-price": {"tax-value": 30,"service-value": 40,"addition-value": 70,"amenity-value": 90, "net-value": 100}  }));
-// -----------------------------------------------------------------------------------------------------
-// -----------------------------------------------------------------------------------------------------
-//------ 02-22-10-2024 ------
-// 02.
-// const one = false || {} || null
-// const two = null || "" || false
-// const three = [] || 0 || true
-//Explanation
-//false null values are falsy value - {}
-//All falsy value go take last one - false
-//[] and true first value check first values is true so - []
-// console.log(one, two, three)
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
 //------ 03 - 02-22-2024 ------
@@ -157,5 +146,39 @@
 // }
 // console.log(name(213))
 
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+// 04-12-2024
+//--Currying--
+// Normal function
+function add(a, b) {
+  return a + b;
+}
+
+// Curried version
+function curryAdd(a) {
+  return function (b) {
+    return a + b;
+  };
+}
+
+// Usage
+// const addFive = curryAdd(5);
+// console.log(addFive(3)); // Output: 8
+// console.log(curryAdd(2)(4)); // Output: 6
+
+//--Infinite Currying--
+function add(a) {
+  return function (b) {
+    if (b !== undefined) {
+      return add(a + b); // Continue currying if `b` is provided
+    }
+    return a; // Return the accumulated result if no arguments
+  };
+}
+
+// Usage:
+// console.log(add(1)(2)(3)()); // Output: 6
+// console.log(add(5)(10)(-3)(8)()); // Output: 20
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
