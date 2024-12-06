@@ -309,9 +309,9 @@ function getList(arr) {
   return node.next;
   //LinkedList {data: 1,next: LinkedList { data: 2, next: LinkedList { data: 3, next: null } }} listOne
 }
-const listOne = getList([1, 2, 3]);
-const listTwo = getList([4, 5, 6]);
-const result = addTwo(listOne, listTwo);
+// const listOne = getList([1, 2, 3]);
+// const listTwo = getList([4, 5, 6]);
+// const result = addTwo(listOne, listTwo);
 // console.log(printedResult(result));
 //leetcodes-style
 // function addTwo(listOne, listTwo) {
