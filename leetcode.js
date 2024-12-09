@@ -336,3 +336,24 @@ function getList(arr) {
 // };
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
+var isValid = function (s) {
+  const obj = { "(": ")", "[": "]", "{": "}" };
+  const stack = [];
+  for (let value of s) {
+    if (obj.hasOwnProperty(value)) {
+      stack.push(value);
+    } else {
+      if (stack.length == 0 || obj[stack.at(-1)] !== value) {
+        return false;
+      }
+      stack.pop();
+    }
+  }
+  return stack.length == 0;
+};
+//([{ -> only open prathese push to stack
+//next ) chek stack length == 0
+//get last statck value ( -->obj[key] value ) new value ) --> )) same value check !==
+isValid("()[]{}");
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------

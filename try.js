@@ -67,7 +67,6 @@ function isValidSudoku(board) {
     }
   }
 
-  
   for (let i = 0; i < 9; i++) {
     for (let j = 0; j < 9; j++) {
       const currentValue = board[i][j];
@@ -86,7 +85,6 @@ function isValidSudoku(board) {
       }
     }
   }
-
 
   return true;
 }
