@@ -89,3 +89,18 @@ function isValidSudoku(board) {
   return true;
 }
 // console.log(isValidSudoku(board));
+var mergeTwoLists = function (list1, list2) {
+  const node = new ListNode(0);
+  var dummy = node;
+  while (list1 || list2) {
+    if (list1.val < list2.val) {
+      dummy.next = list1.val;
+      list1 = list1.next;
+    } else {
+      dummy.next = list2.val;
+      list2 = list1.next;
+    }
+    dummy = dummy.next
+  }
+  // dummy.next = 
+};

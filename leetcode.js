@@ -314,23 +314,23 @@ function getList(arr) {
 // const result = addTwo(listOne, listTwo);
 // console.log(printedResult(result));
 //leetcodes-style
-// function addTwo(listOne, listTwo) {
-//   const node = new ListNode(0);
-//   let carry = 0;
-//   let dummy = node;
-//   while (listOne || listTwo || carry) {
-//     let l1 = listOne?.val || 0;
-//     let l2 = listTwo?.val || 0;
-//     let sum = l1 + l2 + carry;
-//     carry = Math.floor(sum / 10);
-//     const current = new ListNode(sum % 10);
-//     dummy.next = current;
-//     dummy = current;
-//     listOne = listOne?.next || null;
-//     listTwo = listTwo?.next || null;
-//   }
-//   return node.next;
-// }
+function addTwo(listOne, listTwo) {
+  // const node = new ListNode(0);
+  let carry = 0;
+  let dummy = node;
+  while (listOne || listTwo || carry) {
+    let l1 = listOne?.val || 0;
+    let l2 = listTwo?.val || 0;
+    let sum = l1 + l2 + carry;
+    carry = Math.floor(sum / 10);
+    // const current = new ListNode(sum % 10);
+    dummy.next = current;
+    dummy = current;
+    listOne = listOne?.next || null;
+    listTwo = listTwo?.next || null;
+  }
+  return node.next;
+}
 // var addTwoNumbers = function (l1, l2) {
 //   return addTwo(l1, l2);
 // };
@@ -355,5 +355,79 @@ var isValid = function (s) {
 //next ) chek stack length == 0
 //get last statck value ( -->obj[key] value ) new value ) --> )) same value check !==
 isValid("()[]{}");
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+// /**
+//  * @param {ListNode} list1
+//  * @param {ListNode} list2
+//  * @return {ListNode}
+//  */
+// var margeFun = function (data) {
+//   const result = [];
+//   while (data) {
+//     result.push(data.val);
+//     data = data.next;
+//   }
+//   const sortv = result?.length > 0 ? result.sort((a, b) => a - b) : [];
+//   const node = new ListNode(0);
+//   let dummy = node;
+//   for (let num of sortv) {
+//     const current = new ListNode(num);
+//     dummy.next = current;
+//     dummy = current;
+//   }
+//   return node.next;
+// };
+// var mergeTwoLists = function (list1, list2) {
+//   const node = new ListNode(0);
+//   let dummy = node;
+//   while (list1) {
+//     const current = new ListNode(list1.val);
+//     dummy.next = current;
+//     dummy = current;
+//     list1 = list1.next || null;
+//   }
+//   while (list2) {
+//     const current = new ListNode(list2.val);
+//     dummy.next = current;
+//     dummy = current;
+//     list2 = list2.next || null;
+//   }
+//   return margeFun(node.next);
+// };
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val === undefined ? 0 : val);
+ *     this.next = (next === undefined ? null : next);
+ * }
+ */
+/**
+ * @param {ListNode} list1
+ * @param {ListNode} list2
+ * @return {ListNode}
+ */
+var mergeTwoLists = function (list1, list2) {
+  const dummy = new ListNode(0); // Create a dummy node
+  let current = dummy;
+
+  // Merge two lists in sorted order
+  while (list1 && list2) {
+      if (list1.val < list2.val) {
+          current.next = list1;
+          list1 = list1.next;
+      } else {
+          current.next = list2;
+          list2 = list2.next;
+      }
+      current = current.next;
+  }
+
+  // Attach the remaining nodes (if any)
+  current.next = list1 || list2;
+
+  return dummy.next;
+};
+
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
