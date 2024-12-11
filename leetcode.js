@@ -299,7 +299,7 @@ var isValid = function (s) {
 //([{ -> only open prathese push to stack
 //next ) chek stack length == 0
 //get last statck value ( -->obj[key] value ) new value ) --> )) same value check !==
-isValid("()[]{}");
+isValid("(([]{}");
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
 var mergeTwoLists = function (list1, list2) {

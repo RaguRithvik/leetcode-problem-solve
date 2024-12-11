@@ -1,3 +1,5 @@
+//Leetcode try given to chatgpt
+
 const board = [
   ["8", "3", ".", ".", "7", ".", ".", ".", "."],
   ["6", ".", ".", "1", "9", "5", ".", ".", "."],
@@ -89,18 +91,69 @@ function isValidSudoku(board) {
   return true;
 }
 // console.log(isValidSudoku(board));
+var isValid = function (s) {
+  const obj = { "(": ")", "[": "]", "{": "}" };
+  const stack = [];
+  
+  for (let value of s) {
+    if (obj.hasOwnProperty(value)) {
+      stack.push(value);
+    } else {
+      console.log(obj[stack.at(-1)], value, "stack");
+      
+      if (stack.length == 0 || obj[stack.at(-1)] !== value) {
+        return false;
+      }
+      stack.pop();
+    }
+  }
+  return stack.length == 0;
+};
+isValid("(([]{}");
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+const longestValidParentheses = (s) => {
+  const stack = [-1]; // Initialize stack with -1 to handle edge cases
+  let maxLength = 0;
+
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] === "(") {
+      stack.push(i); // Push index of '(' onto the stack
+    } else {
+      stack.pop(); // Pop the top of the stack for ')'
+
+      if (stack.length === 0) {
+        // If the stack is empty, push the current index
+        stack.push(i);
+      } else {
+        // Calculate the length of the valid substring
+        maxLength = Math.max(maxLength, i - stack[stack.length - 1]);
+      }
+    }
+  }
+
+  return maxLength;
+};
+// console.log(longestValidParentheses(")(())())")); // 6
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
 var mergeTwoLists = function (list1, list2) {
-  const node = new ListNode(0);
-  var dummy = node;
-  while (list1 || list2) {
+  const dummy = new ListNode(0); // Create a dummy node
+  let current = dummy;
+  // Merge two lists in sorted order
+  while (list1 && list2) {
     if (list1.val < list2.val) {
-      dummy.next = list1.val;
+      current.next = list1;
       list1 = list1.next;
     } else {
-      dummy.next = list2.val;
-      list2 = list1.next;
+      current.next = list2;
+      list2 = list2.next;
     }
-    dummy = dummy.next
+    current = current.next;
   }
-  // dummy.next = 
+  // Attach the remaining nodes (if any)
+  current.next = list1 || list2;
+  return dummy.next;
 };
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------

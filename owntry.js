@@ -1,3 +1,4 @@
+//Own code no logic
 class LinkedList {
   constructor(data, next = null) {
     this.data = data;
@@ -55,21 +56,58 @@ function getList(arr) {
 // console.log(printedResult(result));
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
-var mergeTwoLists = function (list1, list2) {
-  const dummy = new ListNode(0); // Create a dummy node
-  let current = dummy;
-  // Merge two lists in sorted order
-  while (list1 && list2) {
-    if (list1.val < list2.val) {
-      current.next = list1;
-      list1 = list1.next;
+function longestValid(s) {
+  const obj = { "(": ")" };
+  const stack = [];
+  const result = [];
+  for (let str of s) {
+    if (obj.hasOwnProperty(str)) {
+      stack.push(str);
     } else {
-      current.next = list2;
-      list2 = list2.next;
+      if (stack.length > 0 && obj[stack.at(-1)] == str) {
+        result.push(obj[stack.at(-1)], str);
+        stack.pop();
+      }
     }
-    current = current.next;
   }
-  // Attach the remaining nodes (if any)
-  current.next = list1 || list2;
-  return dummy.next;
-};
+  return result.length;
+}
+longestValid(")(())())");
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+function coinChange(coins, amount) {
+  const data = [];
+  if (!amount) {
+    return 0;
+  }
+  if (coins.length == 1) {
+    if (coins[0] < amount) {
+      if (coins[0] + coins[0] == amount) {
+        data.push(coins[0], coins[0]);
+      } else {
+        return -1;
+      }
+    } else if (coins[0] == amount) {
+      data.push(coins[0]);
+    } else {
+      return -1;
+    }
+  }
+  for (i = 0; i < coins.length; i++) {
+    if (coins[i] + coins[i] + coins[i] == amount) {
+      data.push(i, i, i);
+    }
+    for (j = i + 1; j < coins.length; j++) {
+      if (coins[i] + coins[j] + coins[j] == amount) {
+        data.push(i, j, j);
+      }
+      for (k = i + j + 1; k < coins.length; k++) {
+        if (coins[i] + coins[j] + coins[k] == amount) {
+          data.push(i, j, k);
+        }
+      }
+    }
+  }
+  return data.length;
+}
+coinChange([1, 2, 5], 11);
