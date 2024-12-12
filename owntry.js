@@ -72,7 +72,7 @@ function longestValid(s) {
   }
   return result.length;
 }
-longestValid(")(())())");
+// longestValid(")(())())");
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
 function coinChange(coins, amount) {
@@ -110,4 +110,29 @@ function coinChange(coins, amount) {
   }
   return data.length;
 }
-coinChange([1, 2, 5], 11);
+// coinChange([1, 2, 5], 11);
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+var reverseVowels = function(s) {
+  const vovls = ['a', 'e', 'i', 'o', 'u']
+  const result = []
+  const finalResult = []
+  let count = 0 
+  for(let str of s){
+      const lower = str.toLowerCase()
+      if(vovls.includes(lower)){
+          result.unshift(str)
+      }
+  }
+  for(let str of s){
+      const lower = str.toLowerCase()
+      if(vovls.includes(lower)){
+          finalResult.push(result[count])
+          count++
+      }
+      else{
+          finalResult.push(str)
+      }
+  }
+  return finalResult.join("")
+};

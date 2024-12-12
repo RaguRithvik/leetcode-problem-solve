@@ -94,13 +94,13 @@ function isValidSudoku(board) {
 var isValid = function (s) {
   const obj = { "(": ")", "[": "]", "{": "}" };
   const stack = [];
-  
+
   for (let value of s) {
     if (obj.hasOwnProperty(value)) {
       stack.push(value);
     } else {
       console.log(obj[stack.at(-1)], value, "stack");
-      
+
       if (stack.length == 0 || obj[stack.at(-1)] !== value) {
         return false;
       }
@@ -155,5 +155,23 @@ var mergeTwoLists = function (list1, list2) {
   current.next = list1 || list2;
   return dummy.next;
 };
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+var lengthOfLastWord = function (s) {
+  let count = 0;
+  let inWord = false;
+  // Traverse the string from the end to find the last word
+  for (let i = s.length - 1; i >= 0; i--) {
+    if (s[i] !== " ") {
+      count++;
+      inWord = true;
+    } else if (inWord) {
+      // If we encounter a space after counting a word, we're done
+      break;
+    }
+  }
+  return count;
+};
+console.log(lengthOfLastWord("   fly me   to   the moon  "));
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
