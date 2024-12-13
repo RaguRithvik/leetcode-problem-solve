@@ -136,3 +136,39 @@ var reverseVowels = function(s) {
   }
   return finalResult.join("")
 };
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+var coinChange = function (coins, amount) {
+  let data = 0;
+  if (!amount) {
+    return 0;
+  }
+  for (i = 0; i < coins.length; i++) {
+    if (coins[i] == amount) {
+      data = 1;
+    }
+    if (coins[i] + coins[i] == amount) {
+      data = 2;
+    } else if (coins[i] + coins[i] + coins[i] == amount) {
+      data = 3;
+    } else if (coins[i] < amount && coins.length == 1) {
+      return -1;
+    } else if (coins[i] > amount && coins.length == 1) {
+      return -1;
+    }
+    for (j = i + 1; j < coins.length; j++) {
+      if (coins[i] + coins[j] == amount) {
+        data = 2;
+      } else if (coins[i] + coins[j] + coins[j] == amount) {
+        data = 3;
+      }
+      for (k = i + j + 1; k < coins.length; k++) {
+        if (coins[i] + coins[j] + coins[k] == amount) {
+          data = 3;
+        }
+      }
+    }
+  }
+  return data;
+};
+console.log(coinChange([1, 2], 3));

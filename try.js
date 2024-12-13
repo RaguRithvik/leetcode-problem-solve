@@ -99,8 +99,7 @@ var isValid = function (s) {
     if (obj.hasOwnProperty(value)) {
       stack.push(value);
     } else {
-      console.log(obj[stack.at(-1)], value, "stack");
-
+      // console.log(obj[stack.at(-1)], value, "stack");
       if (stack.length == 0 || obj[stack.at(-1)] !== value) {
         return false;
       }
@@ -172,6 +171,38 @@ var lengthOfLastWord = function (s) {
   }
   return count;
 };
-console.log(lengthOfLastWord("   fly me   to   the moon  "));
+// console.log(lengthOfLastWord("   fly me   to   the moon  "));
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
+var maxSubArray = function (nums) {
+  // let max = 0;
+  // let startIndex = 0;
+  // let endIndex = 0;
+  // for (i = 0; i < nums.length; i++) {
+  //   let currentSum = 0;
+  //   for (j = i; j < nums.length; j++) {
+  //     if (nums[j]) {
+  //       currentSum = currentSum + nums[j];
+  //       if (currentSum > max) {
+  //         max = currentSum;
+  //         startIndex = i;
+  //         endIndex = j;
+  //       }
+  //     }
+  //   }
+  // }
+  // console.log(max, nums.slice(startIndex, endIndex + 1));
+  let sum = 0;
+  let maxSum = 0;
+  for (i = 0; i < nums.length; i++) {
+    sum += nums[i];
+    // console.log(sum, "sum", nums[i]);
+    if (sum > maxSum) maxSum = sum;
+    if (sum < 0) sum = 0;
+  }
+  // console.log(maxSum);
+};
+maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 1]);
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+
