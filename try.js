@@ -205,4 +205,29 @@ var maxSubArray = function (nums) {
 maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 1]);
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
-
+var coinChange = function (coins, amount) {
+  const dp = new Array(amount + 1).fill(Infinity);
+  dp[0] = 0;
+  for (let index = 1; index <= amount; index++) {
+    for (const coin of coins) {
+      if (index - coin >= 0) {
+        dp[index] = Math.min(dp[index], dp[index - coin] + 1);
+      }
+    }
+  }
+  console.log(dp[amount], "dp", dp);
+};
+console.log(coinChange([1, 2, 5], 3));
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+var climbStairs = function (n) {
+  if (n === 1) return 1;
+  let prev = 1;
+  let current = 2;
+  for (i = 3; i <= n; i++) {
+      const temp = current
+      current = prev + current
+      prev = temp
+  }
+  return current
+};
