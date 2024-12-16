@@ -202,4 +202,19 @@ var maxProduct = function (nums) {
   }
   return sum;
 };
-console.log(maxProduct([2, 3, -2, 4]));
+// console.log(maxProduct([2, 3, -2, 4]));
+var getFinalState = function (nums, k, multiplier) {
+  let small = nums[0];
+  let count = 0;
+  while (k > count) {
+    for (i = 0; i < nums.length; i++) {
+      if (small > nums[i]) {
+        nums[i] = multiplier * nums[i];
+        break;
+      }
+    }
+    count++;
+  }
+  console.log(nums, "nums");
+};
+getFinalState([2, 1, 3, 5, 6], 5, 2);

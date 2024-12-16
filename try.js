@@ -200,9 +200,10 @@ var maxSubArray = function (nums) {
     if (sum > maxSum) maxSum = sum;
     if (sum < 0) sum = 0;
   }
-  // console.log(maxSum);
+  console.log(maxSum);
 };
-maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 1]);
+// maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 1]);
+maxSubArray([2, 3, -2, 4]);
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
 var coinChange = function (coins, amount) {
@@ -215,9 +216,9 @@ var coinChange = function (coins, amount) {
       }
     }
   }
-  console.log(dp[amount], "dp", dp);
+  // console.log(dp[amount], "dp", dp);
 };
-console.log(coinChange([1, 2, 5], 3));
+// console.log(coinChange([1, 2, 5], 3));
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
 var climbStairs = function (n) {
@@ -225,9 +226,27 @@ var climbStairs = function (n) {
   let prev = 1;
   let current = 2;
   for (i = 3; i <= n; i++) {
-      const temp = current
-      current = prev + current
-      prev = temp
+    const temp = current;
+    current = prev + current;
+    prev = temp;
   }
-  return current
+  return current;
 };
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+
+var getFinalState = function (nums, k, multiplier) {
+  let count = 0;
+  while (k > count) {
+    let small = Math.min(...nums);
+    for (let i = 0; i < nums.length; i++) {
+      if (nums[i] === small) {
+        nums[i] = nums[i] * multiplier;
+        break;
+      }
+    }
+    count++;
+    return nums;
+  }
+};
+getFinalState([2, 1, 3, 5, 6], 5, 2);
