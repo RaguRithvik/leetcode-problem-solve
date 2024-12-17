@@ -306,32 +306,53 @@ var mergeTwoLists = function (list1, list2) {
   const dummy = new ListNode(0);
   let node = dummy;
   while (list1 && list2) {
-      if (list1.val < list2.val) {
-          node.next = list1
-          list1 = list1.next
-      }
-      else {
-          node.next = list2
-          list2 = list2.next
-      }
-      node = node.next
+    if (list1.val < list2.val) {
+      node.next = list1;
+      list1 = list1.next;
+    } else {
+      node.next = list2;
+      list2 = list2.next;
+    }
+    node = node.next;
   }
   //remaining node check final node 4 < 4 else l2
-  // i need l1 sort 
-  node.next = list1 || list2
-  return dummy.next
+  // i need l1 sort
+  node.next = list1 || list2;
+  return dummy.next;
 };
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
 var lengthOfLastWord = function (s) {
-  const str = s.trim().split(" ")
-  const st = str[str.length - 1]
-  let count = 0
+  const str = s.trim().split(" ");
+  const st = str[str.length - 1];
+  let count = 0;
   for (let i = 0; i < st.length; i++) {
-      count++
+    count++;
   }
-  return count
+  return count;
 };
-lengthOfLastWord("   fly me   to   the moon  ")
+lengthOfLastWord("   fly me   to   the moon  ");
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+var searchInsert = function (nums, target) {
+  let result = null;
+  for (i = 0; i < nums.length; i++) {
+    if (nums[i] == target) {
+      result = i;
+    }
+  }
+  if (result == null) {
+    for (i = 0; i < nums.length; i++) {
+      if (nums[i] > target) {
+        result = i;
+        break;
+      } else if (nums[i] < target) {
+        result = nums.length;
+      }
+    }
+  }
+  return result;
+};
+searchInsert([1,3,5,6], 7)
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------

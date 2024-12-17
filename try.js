@@ -234,7 +234,6 @@ var climbStairs = function (n) {
 };
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
-
 var getFinalState = function (nums, k, multiplier) {
   let count = 0;
   while (k > count) {
@@ -250,3 +249,20 @@ var getFinalState = function (nums, k, multiplier) {
   }
 };
 getFinalState([2, 1, 3, 5, 6], 5, 2);
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+var removeDuplicates = function (nums) {
+  const obj = {};
+  if (nums.length == 0) return [];
+  let uniqueIndex = 0; // Points to the position to insert the next unique element.
+
+  for (let i = 1; i < nums.length; i++) {
+    if (nums[i] !== nums[uniqueIndex]) {
+      uniqueIndex++;
+      nums[uniqueIndex] = nums[i]; // Move the unique element forward.
+    }
+  }
+  console.log(uniqueIndex, "uniqueIndex", nums);
+  
+};
+console.log(removeDuplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4]));

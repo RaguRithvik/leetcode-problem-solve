@@ -215,6 +215,21 @@ var getFinalState = function (nums, k, multiplier) {
     }
     count++;
   }
-  console.log(nums, "nums");
+  // console.log(nums, "nums");
 };
 getFinalState([2, 1, 3, 5, 6], 5, 2);
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+var removeDuplicates = function (nums) {
+  const obj = {}
+  if(nums.length == 0) return []
+  for (i = 0; i < nums.length; i++) {
+      if (!obj[nums[i]]) {
+          obj[nums[i]] = nums[i];
+      }
+  }
+  console.log(Object.keys(obj), "obj");
+  
+  // return result
+};
+console.log(removeDuplicates([0,0,1,1,1,2,2,3,3,4]))
