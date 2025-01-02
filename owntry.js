@@ -174,13 +174,11 @@ var coinChange = function (coins, amount) {
   for (let index = 1; index <= amount; index++) {
     for (const coin of coins) {
       if (index - coin >= 0) {
-        console.log(index - coin, `index-${index} - coin-${coin}`);
-
         dp[index] = Math.min(dp[index], dp[index - coin] + 1);
       }
     }
   }
-  console.log(dp[amount], "dp", dp);
+  // console.log(dp[amount], "dp", dp);
 };
 // console.log(coinChange([1, 2, 5], 3));
 // -----------------------------------------------------------------------------------------------------
@@ -221,15 +219,35 @@ getFinalState([2, 1, 3, 5, 6], 5, 2);
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
 var removeDuplicates = function (nums) {
-  const obj = {}
-  if(nums.length == 0) return []
+  const obj = {};
+  if (nums.length == 0) return [];
   for (i = 0; i < nums.length; i++) {
-      if (!obj[nums[i]]) {
-          obj[nums[i]] = nums[i];
-      }
+    if (!obj[nums[i]]) {
+      obj[nums[i]] = nums[i];
+    }
   }
-  console.log(Object.keys(obj), "obj");
-  
+  // console.log(Object.keys(obj), "obj");
+
   // return result
 };
-console.log(removeDuplicates([0,0,1,1,1,2,2,3,3,4]))
+// console.log(removeDuplicates([0,0,1,1,1,2,2,3,3,4]))
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+var isSubsequence = function (s, t) {
+  const dp = new Array(t.length).fill(0);
+  for (i = 0; i < dp.length; i++) {
+    dp[i] = t[i];
+  }
+  let count = 0;
+  let index = 0;
+  for (let sval of s) {
+    if (t.includes(sval)) {
+      count = count + 1;
+      index = t.indexOf(sval);
+    }
+  }
+  console.log(index, "index", count);
+
+  // return count == s.length
+};
+isSubsequence("acb", "ahbgdc");
