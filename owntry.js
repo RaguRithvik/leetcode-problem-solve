@@ -246,7 +246,7 @@ var isSubsequence = function (s, t) {
       index = t.indexOf(sval);
     }
   }
-  console.log(index, "index", count);
+  // console.log(index, "index", count);
 
   // return count == s.length
 };
@@ -254,18 +254,42 @@ isSubsequence("acb", "ahbgdc");
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
 var plusOne = function (digits) {
-  const arr = []
+  const arr = [];
   for (i = 0; i < digits.length; i++) {
-      if (digits[digits.length - 1] == digits[i]) {
-          if (digits.length == 1) {
-              const result = String(digits[i] + 1).split("")
-              for (i = 0; i < result.length; i++) {
-                  arr.push(Number(result[i]))
-              }
-          }
-          else { arr.push(digits[i] + 1) }
+    if (digits[digits.length - 1] == digits[i]) {
+      if (digits.length == 1) {
+        const result = String(digits[i] + 1).split("");
+        for (i = 0; i < result.length; i++) {
+          arr.push(Number(result[i]));
+        }
+      } else {
+        arr.push(digits[i] + 1);
       }
-      else { arr.push(digits[i]) }
+    } else {
+      arr.push(digits[i]);
+    }
+  }
+  return arr;
+};
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+var generate = function (numRows) {
+  const arr = [];
+  for (i = 0; i < numRows; i++) {
+    arr.push([1]);
+  }
+  for (i = 1; i < arr.length; i++) {
+    for (j = 0; j < i; j++) {
+      arr[i].push(1);
+    }
+  }
+  for (i = 2; i < arr.length; i++) {
+    for (j = 0; j < arr[i].length; j++) {
+      if (j !== 0 && j !== arr[i].length - 1) {
+        arr[i][j] = arr[i - 1][j] + arr[i - 1][j - 1];
+      }
+    }
   }
   return arr
 };
+generate(5);
