@@ -251,3 +251,21 @@ var isSubsequence = function (s, t) {
   // return count == s.length
 };
 isSubsequence("acb", "ahbgdc");
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+var plusOne = function (digits) {
+  const arr = []
+  for (i = 0; i < digits.length; i++) {
+      if (digits[digits.length - 1] == digits[i]) {
+          if (digits.length == 1) {
+              const result = String(digits[i] + 1).split("")
+              for (i = 0; i < result.length; i++) {
+                  arr.push(Number(result[i]))
+              }
+          }
+          else { arr.push(digits[i] + 1) }
+      }
+      else { arr.push(digits[i]) }
+  }
+  return arr
+};

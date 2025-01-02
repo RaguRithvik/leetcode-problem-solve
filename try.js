@@ -200,7 +200,7 @@ var maxSubArray = function (nums) {
     if (sum > maxSum) maxSum = sum;
     if (sum < 0) sum = 0;
   }
-  console.log(maxSum);
+  // console.log(maxSum);
 };
 // maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 1]);
 maxSubArray([2, 3, -2, 4]);
@@ -262,7 +262,21 @@ var removeDuplicates = function (nums) {
       nums[uniqueIndex] = nums[i]; // Move the unique element forward.
     }
   }
-  console.log(uniqueIndex, "uniqueIndex", nums);
+  // console.log(uniqueIndex, "uniqueIndex", nums);
   
 };
-console.log(removeDuplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4]));
+// console.log(removeDuplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4]));
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+var plusOne = function (digits) {
+  for (let i = digits.length - 1; i >= 0; i--) {
+      if (digits[i] < 9) {
+          digits[i]++;
+          return digits;
+      }
+      digits[i] = 0;
+  }
+  digits.unshift(1);
+  return digits;
+};
+console.log(plusOne([1, 2, 3]))
