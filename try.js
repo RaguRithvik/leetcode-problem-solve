@@ -279,4 +279,19 @@ var plusOne = function (digits) {
   digits.unshift(1);
   return digits;
 };
-console.log(plusOne([1, 2, 3]))
+// console.log(plusOne([1, 2, 3]))
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+var generate = function (numRows) {
+  const arr = [];
+  for (i = 0; i < numRows; i++) {
+    arr.push(Array(i + 1).fill(1)); // Initialize with 1s
+  }
+  for (i = 2; i < arr.length; i++) {
+    for (j = 1; j < arr[i].length - 1; j++) {
+      arr[i][j] = arr[i - 1][j] + arr[i - 1][j - 1];
+    }
+  }
+  return arr;
+};
+console.log(generate(5));
