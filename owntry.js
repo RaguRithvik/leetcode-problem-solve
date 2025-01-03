@@ -293,3 +293,33 @@ var generate = function (numRows) {
   return arr
 };
 generate(5);
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+var arrangeCoins = function (n) {
+  const array = [];
+  let m = n; // Remaining coins
+  
+  // Step 1: Build the array structure
+  for (let i = 0; i < n; i++) {
+      array.push(Array(i + 1).fill(null));
+  }
+
+  // Step 2: Fill the coins row by row
+  for (let i = 0; i < array.length; i++) {
+      for (let j = 0; j < array[i].length; j++) {
+          if (m > 0) {
+              array[i][j] = 1;
+              m -= 1;
+          } else {
+              console.log(array, "array"); // Debugging output
+              return i; // Return the number of complete rows
+          }
+      }
+  }
+
+  // console.log(array, "array", array.length); // Debugging output
+  return array.length; // Return total rows if all rows are filled
+};
+console.log(arrangeCoins(6))
+
+
