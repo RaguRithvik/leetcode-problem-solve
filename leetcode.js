@@ -353,6 +353,23 @@ var searchInsert = function (nums, target) {
   }
   return result;
 };
-searchInsert([1,3,5,6], 7)
+searchInsert([1, 3, 5, 6], 7);
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
+//766. Toeplitz Matrix
+//25)03-01-2025
+var isToeplitzMatrix = function (matrix) {
+  for (i = 0; i < matrix.length - 1; i++) {
+    for (j = 0; j < matrix[i].length - 1; j++) {
+      if (matrix[i][j] !== matrix[i + 1][j + 1]) {
+        return false;
+      }
+    }
+  }
+  return true;
+};
+isToeplitzMatrix([
+  [1, 2, 3, 4],
+  [5, 1, 2, 3],
+  [9, 5, 1, 2],
+]);
