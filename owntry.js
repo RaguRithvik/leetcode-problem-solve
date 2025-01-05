@@ -350,6 +350,8 @@ var maxScore = function (s) {
 };
 // Example usage
 const s = "00";
-console.log("Maximum score:", maxScore(s));
+// const s = "011101";
+// console.log("Maximum score:", maxScore(s));
+    
 
 

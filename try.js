@@ -294,22 +294,34 @@ var generate = function (numRows) {
   return arr;
 };
 // console.log(generate(5));
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+var maxScore = function (s) {
+  let totalOnes = 0;
+  let leftZeros = 0;
 
-var margeFun = function (left, right, leftCount = 0, rightCount = 0) {
-  let result = 0;
-  // Count 0's in the left array
-  for (let i = 0; i < left.length; i++) {
-    if (left[i] == 0) {
-      leftCount += 1;
-    }
+  let maxScore = 0;
+  // Count total ones in the string
+  for (let char of s) {
+      if (char === '1') totalOnes++;
   }
-  // Count 1's in the right array
-  for (let i = 0; i < right.length; i++) {
-    if (right[i] == 1) {
-      rightCount += 1;
-    }
+  // Traverse the string to calculate the score
+  for (let i = 0; i < s.length - 1; i++) { // Stop before the last character
+      if (s[i] === '0') {
+          leftZeros++;
+      } else {
+          totalOnes--;
+      }
+      // Calculate score for the current split
+      const score = leftZeros + totalOnes;
+      maxScore = Math.max(maxScore, score);
   }
-  // Calculate the result
-  result = Math.max(result, leftCount + rightCount);
-  return result; // Ensure this function returns the result
+
+  return maxScore;
 };
+
+// Example usage
+// const s = "011101";
+const s = "00";
+console.log("Maximum score:", maxScore(s));
+
