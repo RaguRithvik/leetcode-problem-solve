@@ -424,3 +424,26 @@ var maxScore = function (s) {
   }
   return maxResult;
 };
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+// 1945. Sum of Digits of String After Convert
+//29)06-01-2025
+var getLucky = function (s, k) {
+  const caseLet = Array.from({ length: 26 }, (_, i) =>
+    String.fromCharCode(97 + i)
+  );
+  let transform1 = "";
+  for (let i = 0; i < s.length; i++) {
+    transform1 += caseLet.indexOf(s[i]) + 1;
+  }
+  let result = 0;
+  for (let i = 0; i < k; i++) {
+    result = 0;
+    for (let trasVal of transform1) {
+      result += Number(trasVal);
+    }
+    transform1 = result.toString();
+  }
+  return result;
+};
+// getLucky("leetcode", 2)
