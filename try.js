@@ -263,18 +263,17 @@ var removeDuplicates = function (nums) {
     }
   }
   // console.log(uniqueIndex, "uniqueIndex", nums);
-  
 };
 // console.log(removeDuplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4]));
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
 var plusOne = function (digits) {
   for (let i = digits.length - 1; i >= 0; i--) {
-      if (digits[i] < 9) {
-          digits[i]++;
-          return digits;
-      }
-      digits[i] = 0;
+    if (digits[i] < 9) {
+      digits[i]++;
+      return digits;
+    }
+    digits[i] = 0;
   }
   digits.unshift(1);
   return digits;
@@ -294,4 +293,23 @@ var generate = function (numRows) {
   }
   return arr;
 };
-console.log(generate(5));
+// console.log(generate(5));
+
+var margeFun = function (left, right, leftCount = 0, rightCount = 0) {
+  let result = 0;
+  // Count 0's in the left array
+  for (let i = 0; i < left.length; i++) {
+    if (left[i] == 0) {
+      leftCount += 1;
+    }
+  }
+  // Count 1's in the right array
+  for (let i = 0; i < right.length; i++) {
+    if (right[i] == 1) {
+      rightCount += 1;
+    }
+  }
+  // Calculate the result
+  result = Math.max(result, leftCount + rightCount);
+  return result; // Ensure this function returns the result
+};

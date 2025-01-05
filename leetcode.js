@@ -377,11 +377,11 @@ var isToeplitzMatrix = function (matrix) {
 // -----------------------------------------------------------------------------------------------------
 //704. Binary Search
 //26)03-01-2025
-var search = function(nums, target) {
-  for(i=0; i< nums.length; i++){
-      if(nums[i] == target) return i
+var search = function (nums, target) {
+  for (i = 0; i < nums.length; i++) {
+    if (nums[i] == target) return i;
   }
-  return -1
+  return -1;
 };
 // search([-1,0,3,5,9,12], 9)
 // -----------------------------------------------------------------------------------------------------
@@ -391,9 +391,36 @@ var search = function(nums, target) {
 var arrangeCoins = function (n) {
   let rows = 0;
   while (n >= rows + 1) {
-      rows++;
-      n -= rows;
+    rows++;
+    n -= rows;
   }
   return rows;
-}
+};
 // arrangeCoins(6)
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+// 1422. Maximum Score After Splitting a String
+//27)06-01-2025
+var margeFun = function (left, right, leftCount = 0, rightcount = 0) {
+  let result = 0;
+  for (let i = 0; i < left.length; i++) {
+    if (left[i] == 0) {
+      leftCount += 1;
+    }
+  }
+  for (let i = 0; i < right.length; i++) {
+    if (right[i] == 1) {
+      rightcount += 1;
+    }
+  }
+  return Math.max(result, leftCount + rightcount);
+};
+var maxScore = function (s) {
+  const arr = s.split("");
+  let maxResult = 0;
+  for (i = 1; i < s.length; i++) {
+    const score = margeFun(arr.slice(0, i), arr.slice(i));
+    maxResult = Math.max(maxResult, score);
+  }
+  return maxResult;
+};

@@ -321,5 +321,35 @@ var arrangeCoins = function (n) {
   return array.length; // Return total rows if all rows are filled
 };
 console.log(arrangeCoins(6))
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+var scoreFun = function (left, right, leftCount = 0, rightcount = 0) {
+  let result = 0;
+  for (let i = 0; i < left.length; i++) {
+    if (left[i] == 0) {
+      leftCount += 1;
+    }
+  }
+  for (let i = 0; i < right.length; i++) {
+    if (right[i] == 1) {
+      rightcount += 1;
+    }
+  }
+  return Math.max(result, leftCount + rightcount);
+};
+var maxScore = function (s) {
+  const arr = s.split("");
+  let maxResult = 0;
+  console.log(arr, "arr");
+  
+  for (i = 1; i < arr.length - 1; i++) {
+    const score = scoreFun(arr.slice(0, i), arr.slice(i));
+    maxResult = Math.max(maxResult, score);
+  }
+  return maxResult;
+};
+// Example usage
+const s = "00";
+console.log("Maximum score:", maxScore(s));
 
 
