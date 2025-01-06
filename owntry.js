@@ -290,7 +290,7 @@ var generate = function (numRows) {
       }
     }
   }
-  return arr
+  return arr;
 };
 generate(5);
 // -----------------------------------------------------------------------------------------------------
@@ -298,29 +298,29 @@ generate(5);
 var arrangeCoins = function (n) {
   const array = [];
   let m = n; // Remaining coins
-  
+
   // Step 1: Build the array structure
   for (let i = 0; i < n; i++) {
-      array.push(Array(i + 1).fill(null));
+    array.push(Array(i + 1).fill(null));
   }
 
   // Step 2: Fill the coins row by row
   for (let i = 0; i < array.length; i++) {
-      for (let j = 0; j < array[i].length; j++) {
-          if (m > 0) {
-              array[i][j] = 1;
-              m -= 1;
-          } else {
-              console.log(array, "array"); // Debugging output
-              return i; // Return the number of complete rows
-          }
+    for (let j = 0; j < array[i].length; j++) {
+      if (m > 0) {
+        array[i][j] = 1;
+        m -= 1;
+      } else {
+        // console.log(array, "array"); // Debugging output
+        return i; // Return the number of complete rows
       }
+    }
   }
 
   // console.log(array, "array", array.length); // Debugging output
   return array.length; // Return total rows if all rows are filled
 };
-console.log(arrangeCoins(6))
+// console.log(arrangeCoins(6));
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
 var scoreFun = function (left, right, leftCount = 0, rightcount = 0) {
@@ -340,8 +340,7 @@ var scoreFun = function (left, right, leftCount = 0, rightcount = 0) {
 var maxScore = function (s) {
   const arr = s.split("");
   let maxResult = 0;
-  console.log(arr, "arr");
-  
+  // console.log(arr, "arr");
   for (i = 1; i < arr.length - 1; i++) {
     const score = scoreFun(arr.slice(0, i), arr.slice(i));
     maxResult = Math.max(maxResult, score);
@@ -352,6 +351,21 @@ var maxScore = function (s) {
 const s = "00";
 // const s = "011101";
 // console.log("Maximum score:", maxScore(s));
-    
-
-
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+var construct2DArray = function (original, m, n) {
+  const array = [];
+  for (let i = 1; i < m; i++) {
+    array.push(Array(i + 1).fill(null));
+    for (let j = 1; j < n; j++) {
+      // array.push(Array(j + 1).fill(null));
+    }
+  }
+  // for (let i = 0; i < array.length; i++) {
+  //   for (let j = 0; j < original.length; j++) {
+  //     array[i][i] = original[j];
+  //   }
+  // }
+  console.log(array, "array");
+};
+construct2DArray([1, 2, 3, 4], 2, 2);

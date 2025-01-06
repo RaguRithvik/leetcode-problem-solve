@@ -430,9 +430,7 @@ var maxScore = function (s) {
 // 1945. Sum of Digits of String After Convert
 //29)06-01-2025
 var getLucky = function (s, k) {
-  const caseLet = Array.from({ length: 26 }, (_, i) =>
-    String.fromCharCode(97 + i)
-  );
+  const caseLet = Array.from({ length: 26 }, (_, i) =>String.fromCharCode(97 + i));
   let transform1 = "";
   for (let i = 0; i < s.length; i++) {
     transform1 += caseLet.indexOf(s[i]) + 1;
