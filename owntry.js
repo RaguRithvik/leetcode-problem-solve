@@ -369,3 +369,17 @@ var construct2DArray = function (original, m, n) {
   console.log(array, "array");
 };
 construct2DArray([1, 2, 3, 4], 2, 2);
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+var maxProfit = function (prices) {
+  let maxVal = 0
+  for (i = 0; i < prices.length - 1; i++) {
+      for (j = i + 1; j < prices.length; j++) {
+          if (prices[i] < prices[j]) {
+              maxVal = Math.max(maxVal, prices[j] - prices[i])
+          }
+      }
+  }
+  return maxVal
+};
+maxProfit([7,6,4,3,1])

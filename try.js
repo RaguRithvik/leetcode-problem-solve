@@ -303,18 +303,19 @@ var maxScore = function (s) {
   let maxScore = 0;
   // Count total ones in the string
   for (let char of s) {
-      if (char === '1') totalOnes++;
+    if (char === "1") totalOnes++;
   }
   // Traverse the string to calculate the score
-  for (let i = 0; i < s.length - 1; i++) { // Stop before the last character
-      if (s[i] === '0') {
-          leftZeros++;
-      } else {
-          totalOnes--;
-      }
-      // Calculate score for the current split
-      const score = leftZeros + totalOnes;
-      maxScore = Math.max(maxScore, score);
+  for (let i = 0; i < s.length - 1; i++) {
+    // Stop before the last character
+    if (s[i] === "0") {
+      leftZeros++;
+    } else {
+      totalOnes--;
+    }
+    // Calculate score for the current split
+    const score = leftZeros + totalOnes;
+    maxScore = Math.max(maxScore, score);
   }
 
   return maxScore;
@@ -334,5 +335,21 @@ var countPrefixSuffixPairs = function (words) {
         count++;
       }
     }
-  }}
-  countPrefixSuffixPairs(["a","aba","ababa","aa"])
+  }
+};
+countPrefixSuffixPairs(["a", "aba", "ababa", "aa"]);
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+var maxProfit = function (prices) {
+  let minPrice = Infinity;
+  let maxProfit = 0;
+  for (i = 0; i < prices.length - 1; i++) {
+    if (prices[i] < minPrice) {
+    }
+    else if (prices[i] - minPrice > maxProfit){
+      maxProfit = prices[i] - minPrice;
+    }
+  }
+  return maxVal;
+};
+maxProfit([7, 6, 4, 3, 1]);
