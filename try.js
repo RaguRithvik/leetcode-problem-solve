@@ -324,4 +324,15 @@ var maxScore = function (s) {
 // const s = "011101";
 const s = "00";
 console.log("Maximum score:", maxScore(s));
-
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+var countPrefixSuffixPairs = function (words) {
+  let count = 0;
+  for (let i = 0; i < words.length; i++) {
+    for (let j = i + 1; j < words.length; j++) {
+      if (words[j].startsWith(words[i]) && words[j].endsWith(words[i])) {
+        count++;
+      }
+    }
+  }}
+  countPrefixSuffixPairs(["a","aba","ababa","aa"])

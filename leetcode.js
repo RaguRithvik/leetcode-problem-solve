@@ -430,7 +430,9 @@ var maxScore = function (s) {
 // 1945. Sum of Digits of String After Convert
 //29)06-01-2025
 var getLucky = function (s, k) {
-  const caseLet = Array.from({ length: 26 }, (_, i) =>String.fromCharCode(97 + i));
+  const caseLet = Array.from({ length: 26 }, (_, i) =>
+    String.fromCharCode(97 + i)
+  );
   let transform1 = "";
   for (let i = 0; i < s.length; i++) {
     transform1 += caseLet.indexOf(s[i]) + 1;
@@ -446,3 +448,21 @@ var getLucky = function (s, k) {
   return result;
 };
 // getLucky("leetcode", 2)
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+// 3042. Count Prefix and Suffix Pairs I
+//29)09-01-2025
+var countPrefixSuffixPairs = function (words) {
+  let result = 0;
+  for (i = 0; i < words.length - 1; i++) {
+    for (j = i + 1; j < words.length; j++) {
+      const pref = words[j].slice(0, words[i].length);
+      const suf = words[j].slice(-words[i].length);
+      if (words[i] === suf && words[i] === pref) {
+        result++;
+      }
+    }
+  }
+  return result;
+};
+countPrefixSuffixPairs(["a", "aba", "ababa", "aa"]);
