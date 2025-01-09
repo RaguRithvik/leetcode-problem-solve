@@ -324,7 +324,7 @@ var maxScore = function (s) {
 // Example usage
 // const s = "011101";
 const s = "00";
-console.log("Maximum score:", maxScore(s));
+// console.log("Maximum score:", maxScore(s));
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
 var countPrefixSuffixPairs = function (words) {
@@ -343,13 +343,15 @@ countPrefixSuffixPairs(["a", "aba", "ababa", "aa"]);
 var maxProfit = function (prices) {
   let minPrice = Infinity;
   let maxProfit = 0;
-  for (i = 0; i < prices.length - 1; i++) {
+  for (let i = 0; i < prices.length; i++) {
     if (prices[i] < minPrice) {
-    }
-    else if (prices[i] - minPrice > maxProfit){
+      minPrice = prices[i];
+    } else if (prices[i] - minPrice > maxProfit) {
       maxProfit = prices[i] - minPrice;
     }
   }
-  return maxVal;
+
+  return maxProfit;
 };
-maxProfit([7, 6, 4, 3, 1]);
+// maxProfit([7, 6, 4, 3, 1]);
+maxProfit([7, 1, 5, 3, 6, 4]);

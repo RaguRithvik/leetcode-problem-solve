@@ -466,3 +466,32 @@ var countPrefixSuffixPairs = function (words) {
   return result;
 };
 countPrefixSuffixPairs(["a", "aba", "ababa", "aa"]);
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+//121. Best Time to Buy and Sell Stock
+//31 10-01-2025
+var maxProfit = function (prices) {
+  let small = prices[0];
+  let profit = 0;
+  for (let i = 1; i < prices.length; i++) {
+    if (prices[i] < small) {
+      small = prices[i];
+    }
+    profit = Math.max(profit, prices[i] - small);
+  }
+  return profit;
+};
+maxProfit([7, 1, 5, 3, 6, 4]);
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+// 2185. Counting Words With a Given Prefix
+//32 10-01-2025
+var prefixCount = function (words, pref) {
+  let count = 0;
+  for (i = 0; i < words.length; i++) {
+    if (words[i].startsWith(pref)) {
+      count++;
+    }
+  }
+  return count;
+};
