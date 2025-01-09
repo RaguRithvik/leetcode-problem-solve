@@ -495,3 +495,4 @@ var prefixCount = function (words, pref) {
   }
   return count;
 };
+// prefixCount(["pay","attention","practice","attend"], "at")
