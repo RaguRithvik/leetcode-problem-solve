@@ -355,3 +355,69 @@ var maxProfit = function (prices) {
 };
 // maxProfit([7, 6, 4, 3, 1]);
 maxProfit([7, 1, 5, 3, 6, 4]);
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+var wordSubsets = function (words1, words2) {
+  const result = [];
+  let count = 0;
+  for (let i = 0; i < words1.length; i++) {
+    count = 0;
+    for (let j = 0; j < words2.length; j++) {
+      if (words1[i].includes(words2[j])) {
+        count++;
+      }
+      if (count == 2) {
+        result.push(words1[i]);
+      }
+    }
+  }
+
+  return result;
+};
+// console.log(
+//   wordSubsets(
+//     ["google", "leetcode"],
+//     // ["amazon", "apple", "facebook", "google", "leetcode"],
+//     ["lo", "eo"]
+//   )
+// );
+// function hasSameRepeatedLetters(str, str1) {
+//   if (str.length > 1) {
+//     return str.split("").every((char) => char === str[0]);
+//   } else {
+//     return false;
+//   }
+// }
+// var wordSubsets = function (words1, words2) {
+//   const result = [];
+//   let count = 0;
+//   for (let i = 0; i < words1.length; i++) {
+//     count = 0;
+//     for (let j = 0; j < words2.length; j++) {
+//       let word = words2[j].split("").every((char) => words1[i].includes(char));
+//       let word1 = hasSameRepeatedLetters(words2[j], words1[i])
+//       if (word1) {
+//         if (words1[i].includes(words2[j])) {
+//           word = true;
+//         } else {
+//           word = false;
+//         }
+//       }
+
+//       // console.log(typeof words2[j], "rev");
+
+//       if (word) {
+//         count++;
+//       }
+//       if (count == 2) {
+//         result.push(words1[i]);
+//       }
+//     }
+//   }
+
+//   return result;
+// };
+// console.log(
+//   wordSubsets(["apple", "facebook", "google", "leetcode"], ["e", "oo"])
+// );
+console.log(wordSubsets(["leetcode"], ["e", "oo"]));
