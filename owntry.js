@@ -366,21 +366,50 @@ var construct2DArray = function (original, m, n) {
   //     array[i][i] = original[j];
   //   }
   // }
-  console.log(array, "array");
+  // console.log(array, "array");
 };
 construct2DArray([1, 2, 3, 4], 2, 2);
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
 var maxProfit = function (prices) {
-  let maxVal = 0
+  let maxVal = 0;
   for (i = 0; i < prices.length - 1; i++) {
-      for (j = i + 1; j < prices.length; j++) {
-          if (prices[i] < prices[j]) {
-              maxVal = Math.max(maxVal, prices[j] - prices[i])
-          }
+    for (j = i + 1; j < prices.length; j++) {
+      if (prices[i] < prices[j]) {
+        maxVal = Math.max(maxVal, prices[j] - prices[i]);
       }
+    }
   }
-  return maxVal
+  return maxVal;
 };
 // maxProfit([7,6,4,3,1])
 maxProfit([7, 1, 5, 3, 6, 4]);
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+var wordSubsets = function (words1, words2) {
+  const result = [];
+  let count = 0;
+  for (let i = 0; i < words1.length; i++) {
+    count = 0;
+    for (let j = 0; j < words2.length; j++) {
+      let wordSplit = words2[j].split("");
+      let word = wordSplit.every((char) => words1[i].includes(char));
+      let sameWord = wordSplit.length > 1 && wordSplit[0] === wordSplit[wordSplit.length - 1];
+      if (sameWord) {
+        if (words1[i].includes(words2[j])) {
+          word = true;
+        } else {
+          word = false;
+        }
+      }
+      if (word) {
+        count++;
+      }
+      if (count == words2.length) {
+        result.push(words1[i]);
+      }
+    }
+  }
+  return result;
+};
+console.log(wordSubsets(["acaac","cccbb","aacbb","caacc","bcbbb"], ["c","bc","aa"]));

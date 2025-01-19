@@ -496,3 +496,15 @@ var prefixCount = function (words, pref) {
   return count;
 };
 // prefixCount(["pay","attention","practice","attend"], "at")
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+// 1910. Remove All Occurrences of a Substring
+//19-01-2025 - 33
+var removeOccurrences = function (s, part) {
+  const removeFu = (str) => {
+    if (str === "") return str;
+    return str.includes(part) ? removeFu(str.replace(part, "")) : str;
+  };
+  return removeFu(s);
+};
+removeOccurrences("daabcbaabcbc", "abc");
