@@ -255,7 +255,8 @@ const longestCommonPrefix = (arr) => {
 // arr[j][i]-arr[1][2] o == o arr[0][i]-arr[0][2]
 // arr[j][i]-arr[2][2] i !== o arr[0][i]-arr[0][2] flag false and break 2nd for loop
 // flag condition check true so fl return
-console.log(longestCommonPrefix(["flower", "flow", "flight"])); // Output: "fl"
+
+// console.log(longestCommonPrefix(["flower", "flow", "flight"])); // Output: "fl"
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
 //leetcodes-style
@@ -465,7 +466,7 @@ var countPrefixSuffixPairs = function (words) {
   }
   return result;
 };
-countPrefixSuffixPairs(["a", "aba", "ababa", "aa"]);
+// countPrefixSuffixPairs(["a", "aba", "ababa", "aa"]);
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
 //121. Best Time to Buy and Sell Stock
@@ -481,7 +482,7 @@ var maxProfit = function (prices) {
   }
   return profit;
 };
-maxProfit([7, 1, 5, 3, 6, 4]);
+// maxProfit([7, 1, 5, 3, 6, 4]);
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
 // 2185. Counting Words With a Given Prefix
@@ -502,9 +503,8 @@ var prefixCount = function (words, pref) {
 //19-01-2025 - 33
 var removeOccurrences = function (s, part) {
   const removeFu = (str) => {
-    if (str === "") return str;
     return str.includes(part) ? removeFu(str.replace(part, "")) : str;
   };
   return removeFu(s);
 };
-removeOccurrences("daabcbaabcbc", "abc");
+// console.log(removeOccurrences("daabcbaabcbc", "abc"));

@@ -421,3 +421,42 @@ var wordSubsets = function (words1, words2) {
 //   wordSubsets(["apple", "facebook", "google", "leetcode"], ["e", "oo"])
 // );
 console.log(wordSubsets(["leetcode"], ["e", "oo"]));
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+var maximumLengthSubstring = function (s) {
+  let sub = s[0];
+  let count = 0;
+  let max = 0;
+  for (i = 1; i < s.length; i++) {
+    max = Math.max(max, max + 1);
+    if (sub == s[i]) {
+      count++;
+    }
+    if (count == 2) {
+      sub = s[i];
+      count = 0;
+      max = 1;
+    }
+  }
+  return max;
+};
+var maximumLengthSubstring = function (s) {
+  let maxLength = 0; // To store the maximum length of unique substring
+  let start = 0; // To mark the start of the current substring
+  let seen = new Map(); // To store the last seen index of each character
+
+  for (let i = 0; i < s.length; end++) {
+    if (seen.has(s[i])) {
+      // If the character is already seen, move the start pointer
+      start = Math.max(start, seen.get(s[i]) + 1);
+    }
+    // Update the last seen index of the current character
+    seen.set(s[i], i);
+    // Update the maximum length
+    maxLength = Math.max(maxLength, i - start + 1);
+  }
+  return maxLength;
+};
+console.log(maximumLengthSubstring("abcabcbb")); // Output: 3 ("abc")
+console.log(maximumLengthSubstring("bbbbb")); // Output: 1 ("b")
+console.log(maximumLengthSubstring("pwwkew")); // Output: 3 ("wke")
