@@ -440,23 +440,18 @@ var maximumLengthSubstring = function (s) {
   }
   return max;
 };
-var maximumLengthSubstring = function (s) {
-  let maxLength = 0; // To store the maximum length of unique substring
-  let start = 0; // To mark the start of the current substring
-  let seen = new Map(); // To store the last seen index of each character
-
-  for (let i = 0; i < s.length; end++) {
-    if (seen.has(s[i])) {
-      // If the character is already seen, move the start pointer
-      start = Math.max(start, seen.get(s[i]) + 1);
-    }
-    // Update the last seen index of the current character
-    seen.set(s[i], i);
-    // Update the maximum length
-    maxLength = Math.max(maxLength, i - start + 1);
+console.log(maximumLengthSubstring("abcabcbb")); 
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+//House Robber
+var rob = function (nums) {
+  const arr = Array(nums.length + 1).fill(0)
+  arr[1] = nums[0]
+  for (i = 2; i <= nums.length; i++) {
+      arr[i] = Math.max(arr[i - 1], arr[i - 2] + nums[i - 1])
   }
-  return maxLength;
+  return arr[nums.length]
 };
-console.log(maximumLengthSubstring("abcabcbb")); // Output: 3 ("abc")
-console.log(maximumLengthSubstring("bbbbb")); // Output: 1 ("b")
-console.log(maximumLengthSubstring("pwwkew")); // Output: 3 ("wke")
+// [0, 1, 0, 0 ,0] arr 2- 2 arr[0]--> 0
+// [1, 2, 3, 1] nums 2-1 nums[1]--> 2 0+2 (arr[1], 2) -> (1, 2)--> 2
+// rob([1,2,3,1])
