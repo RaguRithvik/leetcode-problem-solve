@@ -455,3 +455,29 @@ var rob = function (nums) {
 // [0, 1, 0, 0 ,0] arr 2- 2 arr[0]--> 0
 // [1, 2, 3, 1] nums 2-1 nums[1]--> 2 0+2 (arr[1], 2) -> (1, 2)--> 2
 // rob([1,2,3,1])
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+var longestPalindrome = function (s) {
+  if (!s || s.length < 1) return "";
+  let start = 0;
+  let end = 0;
+  function expandAroundCenter(left, right) {
+      while (left >= 0 && s[left] === s[right] && right < s.length) {
+          left-- //left back
+          right++ //right nearby
+      }
+      return right - left - 1 // 1 - -(1) -1 -- 1+1-1 --2-1 -> 1
+  }
+  for (let i = 0; i < s.length; i++) {
+      //odd (0, 0)
+      const len1 = expandAroundCenter(i, i)
+      //Even (0, 1)
+      const len2 = expandAroundCenter(i, i + 1)
+      const len = Math.max(len1, len2)
+      if (len > end - start) {
+          start = i - Math.floor((len - 1) / 2)
+          end = i + Math.floor(len / 2)
+      }
+  }
+  return s.substring(start, end + 1);
+};
