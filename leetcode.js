@@ -520,7 +520,7 @@ var threeSum = function (nums) {
   //j = num[0+1]
   //k = num[num.length-1] -back to front
   for (i = 0; i < num.length - 2; i++) {
-    //i >0  [0] num[0-1] -->num[-1]undefine so that check i check 1  and current[i] previous[i-1] values same
+    //i >0  [0] num[0-1] -->num[-1]undefine so that check i check above 0  and current[i] previous[i-1] values same
     //Skip Duplicates:
     // if (0 > i && num[i] === num[i - 1]) continue
     if (i > 0 && num[i] === num[i - 1]) continue;
