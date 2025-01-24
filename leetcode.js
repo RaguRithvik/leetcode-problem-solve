@@ -548,3 +548,15 @@ var threeSum = function (nums) {
   return result
 };
 //threeSum([-1,0,1,2,-1,-4])
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+//25-01-2024
+//151. Reverse Words in a String
+var reverseWords = function (s) {
+  const arr = s.trim().split(" ")
+  const result = []
+  for (i = arr.length - 1; i >= 0; i--) {
+      if (arr[i] !== "") result.push(arr[i])
+  }
+  return result.join(" ")
+};
