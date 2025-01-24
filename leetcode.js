@@ -508,3 +508,42 @@ var removeOccurrences = function (s, part) {
   return removeFu(s);
 };
 // console.log(removeOccurrences("daabcbaabcbc", "abc"));
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+//15.Three sum
+//25-01-2025
+var threeSum = function (nums) {
+  const num = nums.sort((a, b) => a - b)
+  //console.log(num) //[ -4, -1, -1, 0, 1, 2 ]
+  const result = []
+  //i = num[0] 
+  //j = num[0+1]
+  //k = num[num.length-1] -back to front
+  for (i = 0; i < num.length - 2; i++) {
+    //i >0  [0] num[0-1] -->undefine so that check i check 1  and current[i] previous[i-1] values same
+    //Skip Duplicates:
+    // if (0 > i && num[i] === num[i - 1]) continue
+    if (i > 0 && num[i] === num[i - 1]) continue;
+    let j = i + 1;
+    let k = num.length - 1
+    //k always big
+    //-1i, 0j, 1k
+    while (j < k) {
+      const sum = num[i] + num[j] + num[k]
+      if (sum === 0) {
+        result.push([num[i], num[j], num[k]])
+        //block duplicate
+        //Skip duplicates for the second and third elements
+        //nearby same j and  k increase and decrement apply logic
+        while (num[j] == num[j + 1]) j++
+        while (num[k] == num[k - 1]) k--
+        j++;
+        k--;
+      }
+      //j increment
+      else if (sum < 0) { j++ }
+      else { k-- }
+    }
+  }
+  return result
+};
