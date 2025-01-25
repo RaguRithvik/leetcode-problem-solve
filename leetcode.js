@@ -556,7 +556,33 @@ var reverseWords = function (s) {
   const arr = s.trim().split(" ")
   const result = []
   for (i = arr.length - 1; i >= 0; i--) {
-      if (arr[i] !== "") result.push(arr[i])
+    if (arr[i] !== "") result.push(arr[i])
   }
   return result.join(" ")
 };
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+//25-01-2024
+//238. Product of Array Except Self 
+//17 ms i need to imporve my code
+var productExceptSelf = function (nums) {
+  const prefix = [nums[0]];
+  const suffix = [nums[nums.length - 1]];
+  const result = [];
+  for (let i = 1; i < nums.length; i++) {
+    prefix.push(nums[i] * prefix[i - 1]);
+  }
+  for (let i = nums.length - 1; i > 0; i--) {
+    suffix.push(suffix[nums.length - 1 - i] * nums[i - 1]);
+  }
+  suffix.reverse();
+  for (let i = 0; i < nums.length; i++) {
+    result.push((prefix[i - 1] ?? 1) * (suffix[i + 1] ?? 1));
+  }
+  return result
+};
+// [1,2,3,4]-->[ 1, 2, 6, 24]
+// num[1] * pre[1-1(0)] --> 1 * 2 --> 2
+// [1,2,3,4]-->[24, 24, 12, 4] reverse()
+// num[4] = suffix[4-1-3] -->4 * nums[3-1] nums[2]--> 6 4*6 24
+// productExceptSelf([1,2,3,4])
