@@ -562,6 +562,7 @@ var canJump = function (nums) {
   }
   return true
 };
+//num[0] 3 fist go one step get value 2 here check is 2 step to reach final step next two steps 1, 0 but last index 4 so that return false
 //r=0 i>r 0>0 Math.max(0, 0+3)
 //r=3 1>3(2+1) 3
 //r=3 2>3(1+2) 3
