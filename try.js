@@ -420,7 +420,7 @@ var wordSubsets = function (words1, words2) {
 // console.log(
 //   wordSubsets(["apple", "facebook", "google", "leetcode"], ["e", "oo"])
 // );
-console.log(wordSubsets(["leetcode"], ["e", "oo"]));
+// console.log(wordSubsets(["leetcode"], ["e", "oo"]));
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
 var maximumLengthSubstring = function (s) {
@@ -440,7 +440,7 @@ var maximumLengthSubstring = function (s) {
   }
   return max;
 };
-console.log(maximumLengthSubstring("abcabcbb"));
+// console.log(maximumLengthSubstring("abcabcbb"));
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
 //House Robber
@@ -481,12 +481,12 @@ var longestPalindrome = function (s) {
   }
   return s.substring(start, end + 1);
 };
+// longestPalindrome("babad")
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
 var productExceptSelf = function (nums) {
   const n = nums.length;
   const result = Array(n).fill(1);
-
   // Calculate prefix product and store in result
   let prefix = 1;
   for (let i = 0; i < n; i++) {
@@ -505,5 +505,26 @@ var productExceptSelf = function (nums) {
   //[24, 12, 8, 6]
   return result;
 };
-
 // console.log(productExceptSelf([1, 2, 3, 4]))
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+var longestCommonSubsequence = function (text1, text2) {
+  const m = text1.length;
+  const n = text2.length;
+  // Create a DP table initialized to 0
+  const dp = Array(m + 1).fill(null).map(() => Array(n + 1).fill(0));
+  console.log(dp, "dp")
+  // Build the DP table
+  for (let i = 1; i <= m; i++) {
+    for (let j = 1; j <= n; j++) {
+      if (text1[i - 1] === text2[j - 1]) {
+        dp[i][j] = dp[i - 1][j - 1] + 1; // Characters match
+      } else {
+        dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]); // Take the max of excluding one char
+      }
+    }
+  }
+  // The bottom-right corner contains the length of the LCS
+  // return dp[m][n];
+};
+longestCommonSubsequence("abcde", "ace")
