@@ -412,4 +412,20 @@ var wordSubsets = function (words1, words2) {
   }
   return result;
 };
-console.log(wordSubsets(["acaac","cccbb","aacbb","caacc","bcbbb"], ["c","bc","aa"]));
+// console.log(wordSubsets(["acaac","cccbb","aacbb","caacc","bcbbb"], ["c","bc","aa"]));
+var productExceptSelf = function (nums) {
+  const prefix = [];
+  const suffix = [];
+  const result = [];
+  for (let i = 0; i < nums.length; i++) {
+    prefix.push(nums[i] * (prefix[i - 1]) ?? 1);
+  }
+  for (let i = nums.length - 1; i >= 0; i--) {
+    suffix[i] = (suffix[i + 1] ?? 1) * nums[i]
+  }
+  for (let i = 0; i < nums.length; i++) {
+    result.push((prefix[i - 1] ?? 1) * (suffix[i + 1] ?? 1));
+  }
+  return result
+};
+console.log(productExceptSelf([1, 2, 3, 4]))

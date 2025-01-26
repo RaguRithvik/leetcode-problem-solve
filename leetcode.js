@@ -564,7 +564,7 @@ var reverseWords = function (s) {
 // -----------------------------------------------------------------------------------------------------
 //25-01-2024
 //238. Product of Array Except Self 
-//17 ms i need to imporve my code
+//17ms i need to imporve my code
 var productExceptSelf = function (nums) {
   const prefix = [nums[0]];
   const suffix = [nums[nums.length - 1]];
@@ -581,8 +581,14 @@ var productExceptSelf = function (nums) {
   }
   return result
 };
+//--Prefix--
 // [1,2,3,4]-->[ 1, 2, 6, 24]
-// num[1] * pre[1-1(0)] --> 1 * 2 --> 2
-// [1,2,3,4]-->[24, 24, 12, 4] reverse()
+// num[0] -->num[0] --> 1 
+// num[1] * pre[1-1]1 --> 1*2 --> 2
+// num[2]3 * pre[2-1]2 -> 3*2 --> 6
+// num[3]4 * pre[3-1]6 -> 4*6 --> 24
+//--suffix--
+// [1,2,3,4]-->[4, 12, 24, 24] reverse() pref * sufix
 // num[4] = suffix[4-1-3] -->4 * nums[3-1] nums[2]--> 6 4*6 24
-// productExceptSelf([1,2,3,4])
+
+console.log(productExceptSelf([1,2,3,4]))
