@@ -562,7 +562,7 @@ var canJump = function (nums) {
   }
   return true
 };
-//r =0 i>r 0>0 Math.max(0, 0+3)
+//r=0 i>r 0>0 Math.max(0, 0+3)
 //r=3 1>3(2+1) 3
 //r=3 2>3(1+2) 3
 //r=3 3>3(0+3) 3
