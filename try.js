@@ -550,3 +550,21 @@ var longestCommonSubsequence = function (text1, text2) {
   // return dp[m][n];
 };
 longestCommonSubsequence("abcde", "ace")
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+var canJump = function (nums) {
+  let r = 0
+  for (i = 0; i < nums.length; i++) {
+      if (i > r) {
+          return false
+      }
+      r = Math.max(r, i + nums[i])
+  }
+  return true
+};
+//r =0 i>r 0>0 (0, 0+3)
+//r=3 1>3(2+1) 3
+//r=3 2>3(1+2) 3
+//r=3 3>3(0+3) 3
+//r=3 4>3--false
+//canJump([3,2,1,0,4])
