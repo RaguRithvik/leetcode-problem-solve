@@ -413,10 +413,12 @@ var wordSubsets = function (words1, words2) {
   return result;
 };
 // console.log(wordSubsets(["acaac","cccbb","aacbb","caacc","bcbbb"], ["c","bc","aa"]));
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
 var productExceptSelf = function (nums) {
-  const prefix = [];
-  const suffix = [];
-  const result = [];
+  const prefix = [];//prefx[i-1] * nums[i]
+  const suffix = [];//suffix[i+1] * nums[i]
+  const result = [];//prefx[i-1] * suffix[i+1]
   for (let i = 0; i < nums.length; i++) {
     prefix.push(nums[i] * (prefix[i - 1]) ?? 1);
   }

@@ -489,14 +489,16 @@ var productExceptSelf = function (nums) {
   const result = Array(n).fill(1);
   // Calculate prefix product and store in result
   let prefix = 1;
+  //result-->prefix
   for (let i = 0; i < n; i++) {
     result[i] = prefix;  // Store the prefix product so far.
     prefix *= nums[i];   // Update the prefix product.
   }
   //0(i) 1(prefix) 1(result[i])--> Updated prefix 1×1=1
   //result = [1, 1, 2, 6]
-  // Calculate suffix product on the fly and multiply with result
+  //Calculate suffix product on the fly and multiply with result
   let suffix = 1;
+  //result-->result*suffix
   for (let i = n - 1; i >= 0; i--) {
     result[i] *= suffix;  // Multiply with the suffix product so far.
     suffix *= nums[i];    // Update the suffix product.
@@ -505,7 +507,27 @@ var productExceptSelf = function (nums) {
   //[24, 12, 8, 6]
   return result;
 };
-// console.log(productExceptSelf([1, 2, 3, 4]))
+//suppose 2 prev 1 * 2 --> 2 234 -> 8 
+//result = [1, 1, 1, 1]
+//--prefix--
+//pre =1
+//result = r[0] = pre(1) -> [1]
+//pre = pre* nums[i] 1 * 1
+//result = r[1] = pre(1) -> [1, 1]
+//pre = 1* nums[i] 1 * 2
+//result = r[2] = pre(2) -> [1, 1, 2]
+//pre = 2* nums[i] 2 * 3 -> 6
+//result = r[3] = pre(6) -> [1, 1, 2, 6]
+//--suffix--
+//suf = 1
+//result = r[3] = r[3] * sufix -> 4 * 1 -> [1, 1, 2, 4]
+//sufix = sufix* nums[3] 1 * 4 -> 4
+//result = r[2] = r[2] * sufix -> 2 * 4 -> [1, 1, 8, 4]
+//sufix = sufix * nums[2] 4 * 3 -> 12
+//result = r[1] = r[1] * sufix -> 1 * 12 -> [1, 12, 8, 4]
+//sufix = sufix * nums[1] 12 * 2 -> 24
+//result = r[0] = r[0] * 24 -> 1 * 24 -> [24, 12, 8, 4]
+// console.log(productExceptSelf([1, 2, 3, 4])) //[24, 12, 8, 6]
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
 var longestCommonSubsequence = function (text1, text2) {
