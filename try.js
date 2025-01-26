@@ -440,7 +440,7 @@ var maximumLengthSubstring = function (s) {
   }
   return max;
 };
-console.log(maximumLengthSubstring("abcabcbb")); 
+console.log(maximumLengthSubstring("abcabcbb"));
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
 //House Robber
@@ -448,7 +448,7 @@ var rob = function (nums) {
   const arr = Array(nums.length + 1).fill(0)
   arr[1] = nums[0]
   for (i = 2; i <= nums.length; i++) {
-      arr[i] = Math.max(arr[i - 1], arr[i - 2] + nums[i - 1])
+    arr[i] = Math.max(arr[i - 1], arr[i - 2] + nums[i - 1])
   }
   return arr[nums.length]
 };
@@ -462,22 +462,46 @@ var longestPalindrome = function (s) {
   let start = 0;
   let end = 0;
   function expandAroundCenter(left, right) {
-      while (left >= 0 && s[left] === s[right] && right < s.length) {
-          left-- //left back
-          right++ //right nearby
-      }
-      return right - left - 1 // 1 - -(1) -1 -- 1+1-1 --2-1 -> 1
+    while (left >= 0 && s[left] === s[right] && right < s.length) {
+      left-- //left back
+      right++ //right nearby
+    }
+    return right - left - 1 // 1 - -(1) -1 -- 1+1-1 --2-1 -> 1
   }
   for (let i = 0; i < s.length; i++) {
-      //odd (0, 0)
-      const len1 = expandAroundCenter(i, i)
-      //Even (0, 1)
-      const len2 = expandAroundCenter(i, i + 1)
-      const len = Math.max(len1, len2)
-      if (len > end - start) {
-          start = i - Math.floor((len - 1) / 2)
-          end = i + Math.floor(len / 2)
-      }
+    //odd (0, 0)
+    const len1 = expandAroundCenter(i, i)
+    //Even (0, 1)
+    const len2 = expandAroundCenter(i, i + 1)
+    const len = Math.max(len1, len2)
+    if (len > end - start) {
+      start = i - Math.floor((len - 1) / 2)
+      end = i + Math.floor(len / 2)
+    }
   }
   return s.substring(start, end + 1);
 };
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+var productExceptSelf = function (nums) {
+  const n = nums.length;
+  const result = Array(n).fill(1);
+
+  // Calculate prefix product and store in result
+  let prefix = 1;
+  for (let i = 0; i < n; i++) {
+    result[i] = prefix;  // Store the prefix product so far.
+    prefix *= nums[i];   // Update the prefix product.
+  }
+  //0(i) 1(prefix) 1(result[i])--> Updated prefix 1×1=1
+  // Calculate suffix product on the fly and multiply with result
+  let suffix = 1;
+  for (let i = n - 1; i >= 0; i--) {
+    result[i] *= suffix;  // Multiply with the suffix product so far.
+    suffix *= nums[i];    // Update the suffix product.
+  }
+  //3(i) 1(suffix) 6*1(result[i])--> Updated suffix 1×4=4
+  return result;
+};
+
+// console.log(productExceptSelf([1, 2, 3, 4]))
