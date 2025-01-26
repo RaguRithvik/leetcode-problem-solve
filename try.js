@@ -494,6 +494,7 @@ var productExceptSelf = function (nums) {
     prefix *= nums[i];   // Update the prefix product.
   }
   //0(i) 1(prefix) 1(result[i])--> Updated prefix 1×1=1
+  //result = [1, 1, 2, 6]
   // Calculate suffix product on the fly and multiply with result
   let suffix = 1;
   for (let i = n - 1; i >= 0; i--) {
@@ -501,6 +502,7 @@ var productExceptSelf = function (nums) {
     suffix *= nums[i];    // Update the suffix product.
   }
   //3(i) 1(suffix) 6*1(result[i])--> Updated suffix 1×4=4
+  //[24, 12, 8, 6]
   return result;
 };
 
