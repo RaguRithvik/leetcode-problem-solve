@@ -1,10 +1,16 @@
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
 //Fill and fromCharCode
+//Array(length->3).fill(1) --> [1, 1, 1]
+//Array.form({length: 14}, map value )
+//Array(3).fill(null).map(() => Array(1).fill(0)) -->[[0],[0],[0]]
 const allEngLetter = Array.from({ length: 26 }, (_, i) => String.fromCharCode(97 + i));
 // console.log(allEngLetter, "allEngLetter")
 // [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l','m', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x',  'y', 'z' ]
-
 // String.fromCharCode(97) 97 a -->65 -->A
-
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+//charAt
 // let text = "HELLO WORLD";
 // let char = text.charAt(0); --> H 
 // let char = text.charCodeAt(0); --> H of charCodeAt(H) --> 72
