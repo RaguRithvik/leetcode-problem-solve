@@ -591,4 +591,24 @@ var productExceptSelf = function (nums) {
 // [1,2,3,4]-->[4, 12, 24, 24] reverse() pref * sufix
 // num[4] = suffix[4-1-3] -->4 * nums[3-1] nums[2]--> 6 4*6 24
 
-console.log(productExceptSelf([1,2,3,4]))
+// console.log(productExceptSelf([1,2,3,4]))
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+//49. Group Anagrams
+var groupAnagrams = function (strs) {
+  const map = new Map();
+  for (let str of strs) {
+    const sortedStr = str.split('').sort().join('');
+    if (!map.has(sortedStr)) {
+      map.set(sortedStr, [])
+    }
+    map.get(sortedStr).push(str);//main is present so push
+  }
+  return Array.from(map.values())
+};
+// Map(3) {
+//   'aet' => [ 'eat', 'tea', 'ate' ],
+//   'ant' => [ 'tan', 'nat' ],       
+//   'abt' => [ 'bat' ]
+// }
+console.log(groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]));

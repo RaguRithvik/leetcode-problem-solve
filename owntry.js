@@ -430,4 +430,41 @@ var productExceptSelf = function (nums) {
   }
   return result
 };
-console.log(productExceptSelf([1, 2, 3, 4]))
+// console.log(productExceptSelf([1, 2, 3, 4]))
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+function processArray(obj, index, array, result) {
+  for (let i = 0; i < array.length; i++) {
+    let str1 = "";
+    if (i === index) {
+      continue;
+    }
+    for (let str of array[i]) {
+      if (!obj.has(str)) {
+        str1 = "";
+        break;
+      } else {
+        str1 += str;
+      }
+    }
+    if (str1) {
+      result[result.length - 1].push(str1);
+    }
+  }
+}
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+var groupAnagrams = function (strs) {
+  const result = []
+  for (let i = 0; i < strs.length; i++) {
+    let obj = new Map();
+    for (let str of strs[i]) {
+      obj.set(str, obj.get(str) + 1 || 1);
+      if (result.flat().includes(strs[i])) continue;
+      result.push(strs[i]);
+      processArray(obj, i);
+    }
+  }
+  return result.sort((a, b) => a.length - b.length);
+}
+//console.log(groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"])); // not working in leetcode but code working
