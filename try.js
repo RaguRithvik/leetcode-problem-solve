@@ -537,6 +537,14 @@ var longestCommonSubsequence = function (text1, text2) {
   const dp = Array(m + 1).fill(null).map(() => Array(n + 1).fill(0));
   console.log(dp, "dp")
   // Build the DP table
+  // [
+  //     [0, 0, 0, 0],
+  //     [0, 0, 0, 0],
+  //     [0, 0, 0, 0],
+  //     [0, 0, 0, 0],
+  //     [0, 0, 0, 0],
+  //     [0, 0, 0, 0]
+  // ]
   for (let i = 1; i <= m; i++) {
     for (let j = 1; j <= n; j++) {
       if (text1[i - 1] === text2[j - 1]) {
@@ -547,18 +555,63 @@ var longestCommonSubsequence = function (text1, text2) {
     }
   }
   // The bottom-right corner contains the length of the LCS
-  // return dp[m][n];
+  return dp[m][n];
 };
-longestCommonSubsequence("abcde", "ace")
+// [
+//     [0, 0, 0, 0],i 0
+//     [0, 0, 0, 0],a 1
+//     [0, 0, 0, 0],b 2
+//     [0, 0, 0, 0],c 3
+//     [0, 0, 0, 0],d 4
+//     [0, 0, 0, 0],e 5
+//      0  a1, c2, e3 //j
+// ]
+//text1[1-1]a [1-1]a i =1 j= 1
+// text1[0] == text2[0] -> // match dp[1][1] =dp[1 - 1][1 - 1](0) + 1
+// [
+//     [0, 0, 0, 0],i 0
+//     [0, 1, 0, 0],a 1
+//     [0, 0, 0, 0],b 2
+//     [0, 0, 0, 0],c 3
+//     [0, 0, 0, 0],d 4
+//     [0, 0, 0, 0],e 5
+//      0  a1, c2, e3 //j
+// ]
+//text1[1-1]a [1-2]c i =1 j= 2
+// text1[0] == text2[0] -> // not match check crose
+//1 0 i=1, j=2 previous, top then max
+//[i][j-1] a[1][1](previous) 1
+//[i-1][j] [0][2](top) 0
+//check max 1, 0 1 max
+// dp[1][2] = Math.max(dp[i - 1][j], dp[i][j - 1])
+// [
+//     [0, 0, 0, 0],i 0
+//     [0, 1, 1, 0],a 1
+//     [0, 0, 0, 0],b 2
+//     [0, 0, 0, 0],c 3
+//     [0, 0, 0, 0],d 4
+//     [0, 0, 0, 0],e 5
+//      0  a1, c2, e3 //j
+// ]
+//final result
+// [
+//   [ 0, 0, 0, 0 ],
+//   [ 0, 1, 1, 1 ],
+//   [ 0, 1, 1, 1 ],
+//   [ 0, 1, 2, 2 ],
+//   [ 0, 1, 2, 2 ],
+//   [ 0, 1, 2, 3 ]
+// ]
+// longestCommonSubsequence("abcde", "ace")
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
 var canJump = function (nums) {
   let r = 0
   for (i = 0; i < nums.length; i++) {
-      if (i > r) {
-          return false
-      }
-      r = Math.max(r, i + nums[i])
+    if (i > r) {
+      return false
+    }
+    r = Math.max(r, i + nums[i])
   }
   return true
 };
