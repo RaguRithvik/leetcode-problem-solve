@@ -466,3 +466,29 @@ var groupAnagrams = function (strs) {
   return result.sort((a, b) => a.length - b.length);
 }
 //console.log(groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"])); // not working in leetcode but code working
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+var romanToInt = function (s) {
+  let n = 0
+  let ans = 0
+  for (i = s.length - 1; i >= 0; i--) {
+    switch (s[i]) {
+      case 'I': n = 1; break;
+      case 'V': n = 5; break;
+      case 'X': n = 10; break;
+      case 'L': n = 50; break;
+      case 'C': n = 100; break;
+      case 'D': n = 500; break;
+      case 'M': n = 1000; break;
+    }
+    if (4 * n < ans) {
+      ans -= n
+    }
+    else {
+      ans += n
+    }
+  }
+
+  return ans
+};
+// romanToInt("LVIII")
