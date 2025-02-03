@@ -628,3 +628,47 @@ var canJump = function (nums) {
 //r=3 3>3(0+3) 3
 //r=3 4>3--false
 //canJump([3,2,1,0,4])
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+//68. Text Justification
+function justifyText(words, maxWidth) {
+  let line = [] //array
+  let result = [] //array
+  let lineLength = 0
+  for (let word of words) {
+    if (word.length + line.length + lineLength > maxWidth) {
+      //spaces
+      let space = maxWidth - lineLength
+      for (let i = 0; i < space; i++) {
+        //next indexlogic
+        //[1, 2, 3] last store value 2 now 2 nextvalue 3
+        //how to find 
+        //2 index 1
+        //arr.length 2-1 ->1
+        //arr[arr.length - 1 % 1] --> 3
+        // some logic here apply
+        // console.log([i % (line.length - 1 || 1)], "op");
+        //line[0] = "this" + ""//most come 0 and 1
+        line[i % (line.length - 1 || 1)] += " "
+      }
+      result.push(line.join(''));
+      lineLength = 0
+      line = []
+    }
+    line.push(word) //push current word
+    lineLength += word.length // add current word length
+  }
+  // console.log(result, "result"); //[ 'This    is    an', 'example  of text' ]
+  //we need push remaining last word
+  // "justification." --14 add two space
+  //here repeate function " ".repeat(2) 2(means 2 time means already "" + ""->" " " ")
+  //16-14(-(0)) 2
+  //next condition
+  //shall be --> arr length 2 and linelength 8
+  //16-7-(2-1) -> 8 shall be 8 space we have add 7+(1 already one space here afater shall) 8+8 -> 16
+  result.push(line.join(' ') + " ".repeat(maxWidth - lineLength - (line.length - 1)))
+  return result
+}
+// Example Usage:
+// console.log(justifyText(["This", "is", "an", "example", "of", "text", "justification."], 16)); //[ 'This    is    an', 'example  of text', 'justification.  ' ]
+console.log(justifyText(["What", "must", "be", "acknowledgment", "shall", "be"], 16)); //[ 'What   must   be', 'acknowledgment  ', 'shall be        ' ]
