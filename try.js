@@ -671,4 +671,41 @@ function justifyText(words, maxWidth) {
 }
 // Example Usage:
 // console.log(justifyText(["This", "is", "an", "example", "of", "text", "justification."], 16)); //[ 'This    is    an', 'example  of text', 'justification.  ' ]
-console.log(justifyText(["What", "must", "be", "acknowledgment", "shall", "be"], 16)); //[ 'What   must   be', 'acknowledgment  ', 'shall be        ' ]
+// console.log(justifyText(["What", "must", "be", "acknowledgment", "shall", "be"], 16)); //[ 'What   must   be', 'acknowledgment  ', 'shall be        ' ]
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+// 189. Rotate Array
+var rotate = function (nums, k) {
+  // k = k % nums.length // 3%6 -> 3 find array center
+  // reverse(nums, 0, nums.length - 1)
+  // reverse(nums, 0, k - 1)
+  // reverse(nums, k, nums.length - 1)
+  // //first reverse->0, 6
+  // //2nd reverse->left reverse to center 0, (2)3-1
+  // //3rd reverse->right reverse 3, 6
+  // function reverse(nums, start, end) {
+  //   while (start < end) {
+  //     //6, 0 -> 0, 6
+  //     [nums[start], nums[end]] = [nums[end], nums[start]]
+  //     start++
+  //     end--
+  //   }
+  // }
+  // return nums
+
+  //2nd method
+  let n = nums.length;
+  k = k % n;
+  let temp = nums.slice(n - k) //[ 5, 6, 7 ] 7-3 -> 4 
+  for (let i = n - 1; i >= k; i--) {
+    nums[i] = nums[i - k];
+  }
+  // [1, 2, 3, 1, 2, 3, 4]
+  // [ 1, 2, 3, 4] -> move right
+  // next fix 1, 2, 3 
+  for (let i = 0; i < k; i++) {
+    nums[i] = temp[i]; //fix first three[ 5, 6, 7 ]
+  }
+  // return nums
+};
+console.log(rotate([1, 2, 3, 4, 5, 6, 7], 3))
