@@ -709,3 +709,37 @@ var rotate = function (nums, k) {
   // return nums
 };
 console.log(rotate([1, 2, 3, 4, 5, 6, 7], 3))
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+//796. Rotate String
+var rotateString = function (s, goal) {
+  if (s.length !== goal.length) return false;
+  return (s + s).includes(goal); //"abcde abcde"-->"cdeab"
+};
+rotateString("abcde", "cdeab")
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+// 28.Find the Index of the First Occurrence in a String
+var strStr = function (haystack, needle) {
+  return haystack.indexOf(needle)
+};
+// strStr("sadbutsad", "sad")
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+// 1047. Remove All Adjacent Duplicates In String
+var removeDuplicates = function (s) {
+  const str = []
+  for (let char of s) {
+    if (str.length == 0) {
+      str.push(char)
+    }
+    else if (str[str.length - 1] == char) {
+      str.splice(-1);
+    }
+    else str.push(char)
+  }
+  return str.join('')
+};
+// removeDuplicates("abbaca")
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
