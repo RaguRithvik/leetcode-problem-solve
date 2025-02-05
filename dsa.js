@@ -149,3 +149,38 @@ function Quicksort(arr) {
 //[-7, -2, 1, 5, 8, 54, 99, 100]
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
+function quickSort(arr, low = 0, high = arr.length - 1) {
+  if (low < high) {
+      let pivotIndex = randomPartition(arr, low, high);
+      console.log(pivotIndex, "pivotIndex");
+      
+      quickSort(arr, low, pivotIndex - 1);
+      quickSort(arr, pivotIndex + 1, high);
+  }
+  return arr;
+}
+
+function randomPartition(arr, low, high) {
+  let randomIndex = Math.floor(Math.random() * (high - low + 1)) + low;
+  [arr[randomIndex], arr[high]] = [arr[high], arr[randomIndex]]; // Swap pivot
+  return partition(arr, low, high);
+}
+
+function partition(arr, low, high) {
+  let pivot = arr[high];
+  let i = low - 1;
+
+  for (let j = low; j < high; j++) {
+      if (arr[j] < pivot) {
+          i++;
+          [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+  }
+  [arr[i + 1], arr[high]] = [arr[high], arr[i + 1]];
+  return i + 1;
+}
+
+// Example Usage
+let arr = [3, 6, 8, 10, 1, 2, 1];
+console.log(quickSort(arr)); 
+// Output: [1, 1, 2, 3, 6, 8, 10]

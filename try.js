@@ -743,3 +743,15 @@ var removeDuplicates = function (s) {
 // removeDuplicates("abbaca")
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
+//169. Majority Element
+var majorityElement = function (nums) {
+  const map = new Map()
+  const n = nums.length / 2 // logic check element [] 1.5 > 2 return 3  
+  for (i = 0; i < nums.length; i++) {
+      map.set(nums[i], (map.get(nums[i]) || 0) + 1);
+      if (map.get(nums[i]) > n) {
+          return nums[i];
+      }
+  }
+};
+majorityElement([3,2,3])
