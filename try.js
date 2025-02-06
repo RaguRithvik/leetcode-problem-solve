@@ -800,9 +800,10 @@ var multiply = function (num1, num2) {
       result[i + j] += Math.floor(sum / 10)
     }
   }
-  return result.join("").replace(/^0+/, "") //remove first zero+ means 00
+  return result.join("").replace(/^0+/, "") //remove first zero and + means 00
 };
 // Test cases
 // console.log(multiply("56", "56")); // "3136"
 // console.log(multiply("123", "456")); // "56088"
 console.log(multiply("0", "12345")); // "0"
+console.log(multiply("01234", "0001234")); // -> "000" "0" here add+
