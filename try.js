@@ -748,10 +748,34 @@ var majorityElement = function (nums) {
   const map = new Map()
   const n = nums.length / 2 // logic check element [] 1.5 > 2 return 3  
   for (i = 0; i < nums.length; i++) {
-      map.set(nums[i], (map.get(nums[i]) || 0) + 1);
-      if (map.get(nums[i]) > n) {
-          return nums[i];
-      }
+    map.set(nums[i], (map.get(nums[i]) || 0) + 1);
+    if (map.get(nums[i]) > n) {
+      return nums[i];
+    }
   }
 };
-majorityElement([3,2,3])
+majorityElement([3, 2, 3])
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+// 73. Set Matrix Zeroes
+var setZeroes = function (matrix) {
+  const getZeros = []
+  for (i = 0; i < matrix.length; i++) {
+    for (j = 0; j < matrix[i].length; j++) {
+      if (matrix[i][j] == 0) {
+        getZeros.push([i, j])
+      }
+    }
+  }
+  for (let [row, col] of getZeros) {
+    //row-->i
+    for (let i = 0; i < matrix[0].length; i++) {
+      matrix[row][i] = 0
+    }
+    //down-col->j
+    for (let i = 0; i < matrix.length; i++) {
+      matrix[i][col] = 0
+    }
+  }
+};
+// setZeroes([[1,1,1],[1,0,1],[1,1,1]])
