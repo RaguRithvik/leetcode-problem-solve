@@ -781,7 +781,7 @@ var setZeroes = function (matrix) {
 // setZeroes([[1,1,1],[1,0,1],[1,1,1]])
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
-
+//43. Multiply Strings
 var multiply = function (num1, num2) {
   if (num1 === "0" || num2 === "0") return "0";
   const m = num1.length // 2
@@ -807,3 +807,16 @@ var multiply = function (num1, num2) {
 // console.log(multiply("123", "456")); // "56088"
 console.log(multiply("0", "12345")); // "0"
 console.log(multiply("01234", "0001234")); // -> "000" "0" here add+
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+// 27. Remove Element
+var removeElement = function (nums, val) {
+  let index = 0;
+  for (let i = 0; i < nums.length; i++) {
+      if (nums[i] !== val) {
+          nums[index] = nums[i];
+          index++;
+      }
+  }
+  return index;
+};
