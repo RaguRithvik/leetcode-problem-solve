@@ -64,3 +64,9 @@ console.log(Array.from(map.values())) //[ '1', '2', '3' ] [ '1' ] get value
 let text = "Hello world!";
 let result = text.repeat(2); //nof copies 2
 //"Hello world!Hello world!"
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+//Replace--Regex
+// always start with / end with / -> /^0/
+// ^->start
+//$->End
