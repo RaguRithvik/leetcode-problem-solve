@@ -708,7 +708,7 @@ var rotate = function (nums, k) {
   }
   // return nums
 };
-console.log(rotate([1, 2, 3, 4, 5, 6, 7], 3))
+// console.log(rotate([1, 2, 3, 4, 5, 6, 7], 3))
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
 //796. Rotate String
@@ -716,7 +716,7 @@ var rotateString = function (s, goal) {
   if (s.length !== goal.length) return false;
   return (s + s).includes(goal); //"abcde abcde"-->"cdeab"
 };
-rotateString("abcde", "cdeab")
+// rotateString("abcde", "cdeab")
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
 // 28.Find the Index of the First Occurrence in a String
@@ -779,3 +779,31 @@ var setZeroes = function (matrix) {
   }
 };
 // setZeroes([[1,1,1],[1,0,1],[1,1,1]])
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+
+var multiply = function (num1, num2) {
+  if (num1 === "0" || num2 === "0") return "0";
+  const m = num1.length // 2
+  const n = num2.length // 2
+  const result = Array(m + n).fill(0)
+  for (i = m - 1; i >= 0; i--) {
+    for (j = n - 1; j >= 0; j--) {
+      //first multify last two number 56 56 6 *6
+      //why "0" -> convert string number "6" -"0" => 6
+      const mul = (num1[i] - "0") * (num2[j] - "0")
+      //Add privous value i+j+1 
+      const sum = mul + result[i + j + 1] //get value 3
+      //get lat value 36-> 6 36 %10 -> 6
+      result[i + j + 1] = sum % 10
+      //carry store position 36 / 10 -> 3.6 get floor value 3 
+      result[i + j] += Math.floor(sum / 10)
+    }
+  }
+  return result.join("").replace(/^0+/, "") //remove first zero
+};
+
+// Test cases
+console.log(multiplyStrings("56", "56")); // "3136"
+// console.log(multiplyStrings("123", "456")); // "56088"
+// console.log(multiplyStrings("0", "12345")); // "0"
