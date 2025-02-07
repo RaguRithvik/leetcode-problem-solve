@@ -813,10 +813,43 @@ console.log(multiply("01234", "0001234")); // -> "000" "0" here add+
 var removeElement = function (nums, val) {
   let index = 0;
   for (let i = 0; i < nums.length; i++) {
-      if (nums[i] !== val) {
-          nums[index] = nums[i];
-          index++;
-      }
+    if (nums[i] !== val) {
+      nums[index] = nums[i];
+      index++;
+    }
   }
   return index;
 };
+removeElement([3, 2, 2, 3], 3)
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+// 8. String to Integer (atoi)
+var myAtoi = function (s) {
+  s = s.trim()
+  let result = 0
+  let asign = 1
+  let i = 0
+  // Integer range limits
+  const INT_MAX = 2 ** 31 - 1;
+  const INT_MIN = -(2 ** 31);
+  //Asign - check asign - + 
+  // Check for sign
+  if (i < s.length && (s[i] === "-" || s[i] === "+")) {
+    asign = s[i] === "-" ? -1 : 1;
+    i++;
+  }
+  while (i < s.length && s[i] >= "0" && s[i] <= "9") {
+    //convert number
+    result = result * 10 + (s[i].charAt(0) - "0".charAt(0))
+    //0*10 + 4
+    //4*10+2->42
+    // Handle overflow cases
+    if (result * asign > INT_MAX) return INT_MAX;
+    if (result * asign < INT_MIN) return INT_MIN;
+    i++
+  }
+  return result * asign
+};
+// myAtoi(" -042")
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
