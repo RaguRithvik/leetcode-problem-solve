@@ -492,3 +492,57 @@ var romanToInt = function (s) {
   return ans
 };
 // romanToInt("LVIII")
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+function quickSort(arr, low = 0, high = arr.length - 1) {
+  if (low < high) {
+    //random index 
+    let pivotIndex = randomPartition(arr, low, high)
+    //left swap
+    //[1, 5, 4, 3] -> pivot 1
+    //left [0][0] here why -1 -1 0 left 0 and right 0 no wap
+    //low next pivot
+    quickSort(arr, low, pivotIndex - 1);
+    //right swap
+    //here +1
+    //1+1-> 2 (1, 3) [4, 3]
+    //pivot, high
+    quickSort(arr, pivotIndex + 1, high);
+  }
+  return arr
+}
+function randomPartition(arr, low, high) {
+  //find random povit index
+  //val Math.rondom * max - min +1
+  //Math.floor(val +low)
+  let randomIndex = Math.floor(Math.random() * (high - low + 1)) + low;
+  //swap right -. povit
+  [arr[randomIndex], arr[high]] = [arr[high], arr[randomIndex]]
+  return partition(arr, low, high)
+}
+function partition(arr, low, high) {
+  //arr last is pivoit
+  let povit = arr[high] // choose last as a pivot
+  let i = low - 1
+  //i values - left -1 -> 0-1 -1
+  //beause i++ to 0 index swap
+  for (let j = low; j < high; j++) {
+    //swap value small value of pivot left big value to right
+    if (arr[j] < povit) {
+      i++ //-> -1 +1 = 0
+      //i -> j
+      [arr[i], arr[j]] = [arr[j], arr[i]]//swap
+    }
+  }
+  //pivot swap
+  //last word to i
+  //why i need constant pivot set
+  //after swap
+  //[3, 5, 4 ,1] --> 1< always small to all values 
+  //here [1] -> [3]
+  //[1, 5, 4, 3]--> final convert
+  [arr[i + 1], arr[high]] = [arr[high], arr[i + 1]] //why i+1 -1+1=0 some time pivot not big
+  return i + 1
+}
+let arr = [9, 4, 7, 3, 1, 5, 8, 2, 6];
+console.log(quickSort(arr));
