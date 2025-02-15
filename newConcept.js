@@ -69,4 +69,9 @@ let result = text.repeat(2); //nof copies 2
 //Replace--Regex
 // always start with / end with / -> /^0/
 // ^->start
-//$->End
+// $->End
+// \d - number (0-9)
+// \D - non digits
+// [a-z]
+// [0-9]
+// [] character set

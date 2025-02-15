@@ -42,8 +42,8 @@ const longestCommonPrefix = (arr) => {
     let prefix = "";
     let flag = true;
     for (i = 0; i < arr[0].length; i++) {
-        let firstPrex = arr[0][i];
-        for (j = 1; j < arr.length; j++) {
+        let firstPrex = arr[0][i]; // get first two letter fl
+        for (j = 1; j < arr.length; j++) { //check 2nd final
             if (arr[j][i] !== firstPrex && arr[j][i]) {
                 flag = false;
                 break;
@@ -56,3 +56,52 @@ const longestCommonPrefix = (arr) => {
     return prefix;
 };
 // console.log(longestCommonPrefix(["flower", "flow", "flight"])); // Output: "fl"
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+// 21. Merge Two Sorted Lists
+var mergeTwoLists = function (list1, list2) {
+    const dummy = new ListNode(0);
+    let node = dummy;
+    while (list1 && list2) {
+        if (list1.val < list2.val) {
+            node.next = list1
+            list1 = list1.next
+        }
+        else {
+            node.next = list2
+            list2 = list2.next
+        }
+        node = node.next
+    }
+    //remaining node check final node 4 < 4 else l2
+    // i need l1 sort 
+    node.next = list1 || list2
+    return dummy.next
+};
+mergeTwoLists([1,2,4],  [1,3,4])
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+// 345. Reverse Vowels of a String
+var reverseVowels = function(s) {
+    const vovls = ['a', 'e', 'i', 'o', 'u']
+    const result = []
+    const finalResult = []
+    let count = 0 
+    for(let str of s){
+        const lower = str.toLowerCase()
+        if(vovls.includes(lower)){
+            result.unshift(str)
+        }
+    }
+    for(let str of s){
+        const lower = str.toLowerCase()
+        if(vovls.includes(lower)){
+            finalResult.push(result[count])
+            count++
+        }
+        else{
+            finalResult.push(str)
+        }
+    }
+    return finalResult.join("")
+};
