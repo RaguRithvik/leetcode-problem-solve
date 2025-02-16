@@ -545,4 +545,27 @@ function partition(arr, low, high) {
   return i + 1
 }
 let arr = [9, 4, 7, 3, 1, 5, 8, 2, 6];
-console.log(quickSort(arr));
+// console.log(quickSort(arr));
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+var uniquePaths = function (m, n) {
+  const dp = Array(m).fill(0).map(() => Array(n).fill(0))
+  for (i = 0; i < n; i++) {
+    dp[0][i] = 1
+  }
+  for (i = 0; i < m; i++) {
+    dp[i][0] = 1
+  }
+  // console.log(dp, "dp");
+  // (0) [1, 1, 1, 1, 1, 1, 1]
+  // (1) [1, 0, 0, 0, 0, 0, 0]
+  // (2) [1, 0, 0, 0, 0, 0, 0]  
+  for (i = 1; i < dp.length; i++) {
+    for (j = 1; j < dp[i].length; j++) {
+      dp[i][j] = dp[i][j - 1] + dp[i - 1][j]
+    }
+  }
+  console.log(dp, "dp"); // left(i)(j-1) + top(i-1)(j)
+  // return dp[m-1][n-1] dp[2][6] -> 28
+};
+uniquePaths(3, 7)
