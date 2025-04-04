@@ -569,3 +569,32 @@ var uniquePaths = function (m, n) {
   // return dp[m-1][n-1] dp[2][6] -> 28
 };
 uniquePaths(3, 7)
+
+var uniquePathsWithObstacles = function (obstacleGrid) {
+  const row = obstacleGrid.length - 1
+  const column = obstacleGrid[0].length - 1
+  const dp = Array(row + 1).fill(0).map(() => Array(column + 1).fill(0))
+  //[ [ 0, 0, 0 ], [ 0, 0, 0 ], [ 0, 0, 0 ] ]
+  dp[0][0] = 1
+  //[ 
+  // i->[ 1, 0, 0 ], 
+  // [ 0, 0, 0 ], 
+  // [ 0, 0, 0 ] 
+  //]
+  for (let i = 0; i < dp.length; i++) {
+    for (let j = 0; j < dp[i].length; j++) {
+      //1 value set 0
+      if (obstacleGrid[i][j] == 1) {
+        dp[i][j] = 1
+        //[ [ 1, 0, 0 ], [ 0, 0, 0 ], [ 0, 0, 0 ] ]
+      }
+      else {
+        if (i > 0) dp[i][j] += dp[i-1][j]
+        if (j > 0) dp[i][j] += dp[i-1][j]
+
+      }
+    }
+  }
+  console.log(dp, "dp")
+};
+uniquePathsWithObstacles([[0, 0, 0], [0, 1, 0], [0, 0, 0]])
