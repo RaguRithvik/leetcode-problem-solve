@@ -565,10 +565,10 @@ var uniquePaths = function (m, n) {
       dp[i][j] = dp[i][j - 1] + dp[i - 1][j]
     }
   }
-  console.log(dp, "dp"); // left(i)(j-1) + top(i-1)(j)
+  // console.log(dp, "dp"); // left(i)(j-1) + top(i-1)(j)
   // return dp[m-1][n-1] dp[2][6] -> 28
 };
-uniquePaths(3, 7)
+// uniquePaths(3, 7)
 
 var uniquePathsWithObstacles = function (obstacleGrid) {
   const row = obstacleGrid.length - 1
@@ -589,12 +589,31 @@ var uniquePathsWithObstacles = function (obstacleGrid) {
         //[ [ 1, 0, 0 ], [ 0, 0, 0 ], [ 0, 0, 0 ] ]
       }
       else {
-        if (i > 0) dp[i][j] += dp[i-1][j]
-        if (j > 0) dp[i][j] += dp[i-1][j]
+        if (i > 0) dp[i][j] += dp[i - 1][j]
+        if (j > 0) dp[i][j] += dp[i - 1][j]
 
       }
     }
   }
   console.log(dp, "dp")
 };
-uniquePathsWithObstacles([[0, 0, 0], [0, 1, 0], [0, 0, 0]])
+// uniquePathsWithObstacles([[0, 0, 0], [0, 1, 0], [0, 0, 0]])
+
+var trap = function (height) {
+  let sum = 0
+  let left = 0
+  let right = 0
+  for (i = 1; i < height.length - 1; i++) {
+    left = height[i]
+    right = height[i]
+    for (let j = 0; j <= i; j++) {
+      left = Math.max(left, height[j])
+    }
+    for (let k = i; k < height.length; k++) {
+      right = Math.max(right, height[k])
+    }
+    sum += Math.min(left, right) - height[i]
+  }
+  return sum
+};
+trap([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1])
