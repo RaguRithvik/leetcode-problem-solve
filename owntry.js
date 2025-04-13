@@ -571,49 +571,43 @@ var uniquePaths = function (m, n) {
 // uniquePaths(3, 7)
 
 var uniquePathsWithObstacles = function (obstacleGrid) {
-  const row = obstacleGrid.length - 1
-  const column = obstacleGrid[0].length - 1
-  const dp = Array(row + 1).fill(0).map(() => Array(column + 1).fill(0))
-  //[ [ 0, 0, 0 ], [ 0, 0, 0 ], [ 0, 0, 0 ] ]
+  const row = obstacleGrid.length
+  const column = obstacleGrid[0].length
+  if (obstacleGrid[0][0] == 1 || obstacleGrid[row - 1][column - 1] == 1) return 0
+  const dp = Array(row).fill(0).map(() => Array(column).fill(0))
   dp[0][0] = 1
-  //[ 
-  // i->[ 1, 0, 0 ], 
-  // [ 0, 0, 0 ], 
-  // [ 0, 0, 0 ] 
-  //]
   for (let i = 0; i < dp.length; i++) {
     for (let j = 0; j < dp[i].length; j++) {
       //1 value set 0
       if (obstacleGrid[i][j] == 1) {
-        dp[i][j] = 1
+        dp[i][j] = 0
         //[ [ 1, 0, 0 ], [ 0, 0, 0 ], [ 0, 0, 0 ] ]
       }
       else {
         if (i > 0) dp[i][j] += dp[i - 1][j]
-        if (j > 0) dp[i][j] += dp[i - 1][j]
-
+        if (j > 0) dp[i][j] += dp[i][j - 1]
       }
     }
   }
-  console.log(dp, "dp")
+  return dp[row - 1][column - 1]
 };
-// uniquePathsWithObstacles([[0, 0, 0], [0, 1, 0], [0, 0, 0]])
+uniquePathsWithObstacles([[0, 0, 0], [0, 1, 0], [0, 0, 0]])
 
-var trap = function (height) {
-  let sum = 0
-  let left = 0
-  let right = 0
-  for (i = 1; i < height.length - 1; i++) {
-    left = height[i]
-    right = height[i]
-    for (let j = 0; j <= i; j++) {
-      left = Math.max(left, height[j])
-    }
-    for (let k = i; k < height.length; k++) {
-      right = Math.max(right, height[k])
-    }
-    sum += Math.min(left, right) - height[i]
-  }
-  return sum
-};
-trap([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1])
+// var trap = function (height) {
+//   let sum = 0
+//   let left = 0
+//   let right = 0
+//   for (i = 1; i < height.length - 1; i++) {
+//     left = height[i]
+//     right = height[i]
+//     for (let j = 0; j <= i; j++) {
+//       left = Math.max(left, height[j])
+//     }
+//     for (let k = i; k < height.length; k++) {
+//       right = Math.max(right, height[k])
+//     }
+//     sum += Math.min(left, right) - height[i]
+//   }
+//   return sum
+// };
+// trap([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1])
