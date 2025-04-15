@@ -569,7 +569,8 @@ var uniquePaths = function (m, n) {
   // return dp[m-1][n-1] dp[2][6] -> 28
 };
 // uniquePaths(3, 7)
-
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
 var uniquePathsWithObstacles = function (obstacleGrid) {
   const row = obstacleGrid.length
   const column = obstacleGrid[0].length
@@ -592,6 +593,8 @@ var uniquePathsWithObstacles = function (obstacleGrid) {
   return dp[row - 1][column - 1]
 };
 uniquePathsWithObstacles([[0, 0, 0], [0, 1, 0], [0, 0, 0]])
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
 
 // var trap = function (height) {
 //   let sum = 0
@@ -611,3 +614,32 @@ uniquePathsWithObstacles([[0, 0, 0], [0, 1, 0], [0, 0, 0]])
 //   return sum
 // };
 // trap([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1])
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+var minDistance = function (word1, word2) {
+  const dp = Array(word1.length + 1).fill().map(() => Array(word2.length + 1).fill(0));
+  for (i = 0; i < dp.length; i++) {
+    dp[i][0] = i
+  }
+  for (i = 0; i < dp[0].length; i++) {
+    dp[0][i] = i
+  }
+  for (i = 1; i <= word1.length; i++) {
+    for (j = 1; j <= word2.length; j++) {
+      if (word1[i - 1] === word2[j - 1]) {
+        dp[i][j] = dp[i - 1][j - 1]
+      }
+      else {
+        //top->delete [i-1][j]
+        //inset->right [i][j-1]
+        //replace crosee top
+        dp[i][j] = 1 + Math.min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1])
+      }
+    }
+  }
+  // console.log(dp, "dp")
+  return dp[word1.length][word2.length]
+};
+minDistance("horse", "ros")
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
