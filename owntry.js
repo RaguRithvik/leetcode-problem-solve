@@ -643,3 +643,16 @@ var minDistance = function (word1, word2) {
 minDistance("horse", "ros")
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
+// 300. Longest Increasing Subsequence
+var lengthOfLIS = function (nums) {
+  const dp = Array(nums.length + 1).fill(1);
+  for (i = 1; i < nums.length; i++) {
+    for (j = 0; j < i; j++) {
+      //check i is bigger to j then j is start with zero
+      //max of dp[i] and dp[j]+1
+      if (nums[j] < nums[i]) dp[i] = Math.max(dp[i], dp[j] + 1);
+    }
+  }
+  return Math.max(...dp)
+};
+lengthOfLIS([10, 9, 2, 5, 3, 7, 101, 18])
