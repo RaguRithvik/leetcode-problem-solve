@@ -677,3 +677,31 @@ var wordBreak = function (s, wordDict) {
 wordBreak("leetcode", ["leet", "code"]);
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
+//91. Decode Ways
+var numDecodings = function (s) {
+  const dp = Array(s.length + 1).fill(0);
+  //empty string 
+  dp[0] = 1
+  //suppose word 0123 that we 0 bcz 1 is a 26 is z 0 has no value
+  dp[1] = s[0] == "0" ? 0 : 1
+  //
+  for (i = 2; i < dp.length; i++) {
+      //one digit
+      //1, 2
+      const oneDigit = parseInt(s.slice(i - 1, i))
+      //two digit
+      //0, 2
+      const twoDigit = parseInt(s.slice(i - 2, i))
+      //check one digit 1 to 9
+      if (oneDigit >= 1 && oneDigit <= 9) {
+          //add current value
+          dp[i] += dp[i - 1]
+      }
+      //check two digit 10 to 26 (english letter 26)
+      if (twoDigit >= 10 && twoDigit <= 26) {
+          dp[i] += dp[i - 2]
+      }
+  }
+  return dp[s.length]
+};
+// numDecodings("226")
