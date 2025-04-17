@@ -656,3 +656,23 @@ var lengthOfLIS = function (nums) {
   return Math.max(...dp)
 };
 lengthOfLIS([10, 9, 2, 5, 3, 7, 101, 18])
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+//139. Word Break
+var wordBreak = function (s, wordDict) {
+  const wordSet = new Set(wordDict);
+  const dp = Array(s.length + 1).fill(false)
+  dp[0] = true
+  for (i = 1; i < dp.length; i++) {
+    for (j = 0; j < i; j++) {
+      if (dp[j] && wordSet.has(s.slice(j, i))) {
+        dp[i] = true;
+        break;
+      }
+    }
+  }
+  return dp[s.length]
+};
+//s = "leetcode", wordDict = ["leet","code"]
+//s = "catsandog", wordDict = ["cats","dog","sand","and","cat"]
+wordBreak("leetcode", ["leet", "code"]);
