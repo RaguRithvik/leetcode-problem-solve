@@ -853,3 +853,34 @@ var myAtoi = function (s) {
 // myAtoi(" -042")
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
+// 42. Trapping Rain Water
+function trap(height) {
+  let left = 0; let leftMax = 0
+  let right = height.length - 1; let rightMax = 0;
+  let trapWaters = 0
+  //right always big
+  while (left < right) {
+    //here right value always big
+    if (height[left] < height[right]) {
+      //if current value bigger to leftmax
+      //change current value to letftmax
+      if (height[left] >= leftMax) leftMax = height[left]
+      //no leftmax - to current values
+      else trapWaters += leftMax - height[left]
+      //move on next pointer
+      left++
+    }
+    //same logic right
+    else {
+      //if current value bigger to rightMax
+      //change current value to rightMax
+      if (height[right] >= rightMax) rightMax = height[right]
+      //no rightMax - to current values
+      else trapWaters += rightMax - height[right]
+      //move on next pointer
+      right--
+    }
+  }
+  return trapWaters
+}
+console.log(trap([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]));
