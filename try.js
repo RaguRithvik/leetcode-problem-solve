@@ -906,5 +906,4 @@ var generateParenthesis = function (n) {
   brackTrack("", 0, 0);
   return result
 };
-generateParenthesis(3)
-//["((()))","(()())","(())()","()(())","()()()"]
+generateParenthesis(3) //["((()))","(()())","(())()","()(())","()()()"]
