@@ -884,3 +884,27 @@ function trap(height) {
   return trapWaters
 }
 console.log(trap([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]));
+// -----------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------
+// 22. Generate Parentheses
+var generateParenthesis = function (n) {
+  const result = []
+  function brackTrack(brackets, open, close) {
+    if (brackets.length == n * 2) {
+      result.push(brackets);
+      return
+    }
+    //open
+    if (open < n) {
+      brackTrack(brackets + "(", open + 1, close)
+    }
+    //close
+    if (open > close) {
+      brackTrack(brackets + ")", open, close + 1)
+    }
+  }
+  brackTrack("", 0, 0);
+  return result
+};
+generateParenthesis(3)
+//["((()))","(()())","(())()","()(())","()()()"]
