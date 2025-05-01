@@ -805,8 +805,8 @@ var multiply = function (num1, num2) {
 // Test cases
 // console.log(multiply("56", "56")); // "3136"
 // console.log(multiply("123", "456")); // "56088"
-console.log(multiply("0", "12345")); // "0"
-console.log(multiply("01234", "0001234")); // -> "000" "0" here add+
+// console.log(multiply("0", "12345")); // "0"
+// console.log(multiply("01234", "0001234")); // -> "000" "0" here add+
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
 // 27. Remove Element
@@ -883,7 +883,7 @@ function trap(height) {
   }
   return trapWaters
 }
-console.log(trap([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]));
+// console.log(trap([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]));
 // -----------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------
 // 22. Generate Parentheses
@@ -906,4 +906,60 @@ var generateParenthesis = function (n) {
   brackTrack("", 0, 0);
   return result
 };
-generateParenthesis(3) //["((()))","(()())","(())()","()(())","()()()"]
+// generateParenthesis(3) //["((()))","(()())","(())()","()(())","()()()"]
+var spiralOrder = function (matrix) {
+  const result = []
+  //left -> rigth
+  //top -> bottom
+  //left <- right
+  //bottom -> top
+  let left = 0
+  let rigth = matrix[0].length - 1 //first row [0][2]
+  let top = 0
+  let bottom = matrix.length - 1 //bottom last [2][0]
+  // [
+  // [1,2,3],
+  // [4,5,6],
+  // [7,8,9]
+  // ]
+  //left[][0->2] left - to right
+  while (left <= rigth && top <= bottom) {
+    for (let i = left; i <= rigth; i++) {
+      result.push(matrix[top][i])
+    }
+    top++ //we 6 is 
+    //top -> bottom 6 - 9 but 6
+    //[1][2]
+    //[2][2]
+    for (let i = top; i <= bottom; i++) {
+      result.push(matrix[i][rigth])
+    }
+    rigth-- // 8
+    //right to left
+    //9, 8, 7 but 9 already push [2][1] [2][0] 
+    //check bottom here spiral check so bottom check
+    if (top <= bottom) {
+      for (let i = rigth; i >= left; i--) {
+        result.push(matrix[bottom][i])
+      }
+      bottom--
+    }
+    if (left <= rigth) {
+      //bottom to top
+      //7 4 1  7, 1 already pushed 4
+      // [
+      // [1,2,3],
+      // [4,5,6],
+      // [7,8,9]
+      // ]
+      //[0][0]1 [1][0]4 [2][0]7
+      for (let i = bottom; i >= top; i--) {
+        result.push(matrix[i][left])
+      }
+      left++
+    }
+  }
+  // [1, 2, 3, 6, 9, 8, 7, 4]
+  console.log(result, "result")
+};
+spiralOrder([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
